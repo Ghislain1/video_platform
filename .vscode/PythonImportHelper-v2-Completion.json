@@ -262,6 +262,15 @@
         "documentation": {}
     },
     {
+        "label": "Video",
+        "kind": 6,
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='videos/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "video_platform.asgi",
