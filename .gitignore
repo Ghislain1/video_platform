@@ -1,0 +1,9 @@
+#Python
+video_platform/_pycache_/
+*.pyc
+*.pyo
+*.pyd
+
+#Django
+*.log
+videoplatform.sqlite3
