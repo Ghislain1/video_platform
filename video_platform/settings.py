@@ -126,3 +126,7 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# enable media files here
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'

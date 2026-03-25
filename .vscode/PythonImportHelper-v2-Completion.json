@@ -96,6 +96,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -168,6 +184,38 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "Video",
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "isExtraImport": true,
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -193,19 +241,19 @@
         "documentation": {}
     },
     {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
         "isExtraImport": true,
-        "detail": "django.urls",
+        "detail": "django.conf.urls.static",
         "documentation": {}
     },
     {
-        "label": "include",
-        "importPath": "django.urls",
-        "description": "django.urls",
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
         "isExtraImport": true,
-        "detail": "django.urls",
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -253,6 +301,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "videos.migrations.0001_initial",
+        "description": "videos.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Video',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('title', models.CharField(max_length=255)),",
+        "detail": "videos.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
         "label": "VideosConfig",
         "kind": 6,
         "importPath": "videos.apps",
@@ -268,6 +325,24 @@
         "description": "videos.models",
         "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='videos/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
         "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "videos.urls",
+        "description": "videos.urls",
+        "peekOfCode": "urlpatterns = [\n    path('', views.video_list, name ='video_list')\n]",
+        "detail": "videos.urls",
+        "documentation": {}
+    },
+    {
+        "label": "video_list",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    return render(request, 'videos/video_list.html', {'videos': videos})",
+        "detail": "videos.views",
         "documentation": {}
     },
     {
@@ -392,7 +467,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -401,7 +476,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -410,7 +485,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -419,7 +494,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "STATIC_URL = 'static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -428,7 +503,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "LOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "LOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -437,7 +512,25 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "LOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "LOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
+        "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "video_platform.settings",
+        "description": "video_platform.settings",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
+        "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "video_platform.settings",
+        "description": "video_platform.settings",
+        "peekOfCode": "MEDIA_ROOT = 'media/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -446,7 +539,7 @@
         "kind": 5,
         "importPath": "video_platform.urls",
         "description": "video_platform.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('videos.urls')),\n    path('accounts/', include('django.contrib.auth.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('videos.urls')),\n    path('accounts/', include('django.contrib.auth.urls')),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "video_platform.urls",
         "documentation": {}
     },
