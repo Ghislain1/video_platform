@@ -7,3 +7,5 @@ video_platform/_pycache_/
 #Django
 *.log
 videoplatform.sqlite3
+db.sqlite3
+.vscode
