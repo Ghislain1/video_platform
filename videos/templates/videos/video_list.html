@@ -3,8 +3,30 @@
     <div>
         <h3>{{ video.title }}</h3>
         <p>{{ video.description }}</p>
-        <video width="300" controls>
+        <video width="400" controls data-preview="{{ video.preview_duration }}" id="video-{{ video.id }}">
             <source src="{{ video.video_file.url}} " type="video/mp4">
         </video>
+        <p>Price: ${{ video.price }}</p>
+        <button onclick="unlockVideo({{video.id }})">
+        Unlock Full Video</button>
     </div>
     {% endfor %}
+
+    <script>
+        const videos = document.querySelectorAll("video");
+
+        videos.forEach(video => {
+            const previewTime = parseInt(video.dataset.preview);
+
+            video.addEventListener("timeupdate", () => {
+                if (video.currentTime >= previewTime) {
+                    video.pause();
+                    alert("Preview ! Pay to unlock full video.");
+                }
+            });
+        });
+
+        function unlockVideo(videoId){
+            alert("Redirect to payment for video " + videoId)
+        }
+    </script>
