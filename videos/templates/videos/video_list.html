@@ -7,7 +7,7 @@
             <source src="{{ video.video_file.url}} " type="video/mp4">
         </video>
         <p>Price: ${{ video.price }}</p>
-        <button onclick="unlockVideo({{video.id }})">
+        <button onclick="window.location.href='/pay/{{ video.id }}/'">
         Unlock Full Video</button>
     </div>
     {% endfor %}

@@ -131,3 +131,7 @@ LOGOUT_REDIRECT_URL = '/'
 # enable media files here
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
+
+# stripe key's
+STRIPE_PUBLIC_KEY = "pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6"
+STRIPE_SECRET_KEY = "sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ"
