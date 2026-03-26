@@ -145,6 +145,14 @@
         "documentation": {}
     },
     {
+        "label": "Purchase",
+        "importPath": "payments.models",
+        "description": "payments.models",
+        "isExtraImport": true,
+        "detail": "payments.models",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -526,7 +534,7 @@
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    return render(request, 'videos/video_list.html', {'videos': videos})",
+        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    purchased_video_ids = []\n    if request.user.is_authenticated:\n        purchased_video_ids = Purchase.objects.filter(\n            user = request.user,\n            is_paid= True\n        ).values_list('video_id', flat=True)\n    return render(request, 'videos/video_list.html', {\n        'videos': videos,",
         "detail": "videos.views",
         "documentation": {}
     },

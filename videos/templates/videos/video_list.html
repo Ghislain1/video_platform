@@ -3,12 +3,15 @@
     <div>
         <h3>{{ video.title }}</h3>
         <p>{{ video.description }}</p>
-        <video width="400" controls data-preview="{{ video.preview_duration }}" id="video-{{ video.id }}">
+        <video width="400" controls data-preview="{{ video.preview_duration }}" data-video-id="{{video.id}}" data-has-access="{% if video.id in purchased_video_ids %} true{% else %} false{% endif %}">
             <source src="{{ video.video_file.url}} " type="video/mp4">
         </video>
         <p>Price: ${{ video.price }}</p>
-        <button onclick="window.location.href='/pay/{{ video.id }}/'">
-        Unlock Full Video</button>
+        {% if video.id not in purchased_video_ids %}
+            <a href="/pay/{{ video.id }}">Unlock Full Video</a>
+        {% else %}
+            <p style="color: green;">You own this video</p>
+        {% endif %}
     </div>
     {% endfor %}
 
@@ -17,16 +20,15 @@
 
         videos.forEach(video => {
             const previewTime = parseInt(video.dataset.preview);
+            const hasAccess = video.dataset.hasAccess === "true";
 
-            video.addEventListener("timeupdate", () => {
-                if (video.currentTime >= previewTime) {
-                    video.pause();
-                    alert("Preview ! Pay to unlock full video.");
-                }
-            });
+            if (!hasAccess){
+                video.addEventListener("timeupdate", () => {
+                    if (video.currentTime >= previewTime){
+                        video.pause();
+                        alert("Preview finished. Please pay to unlock full video.");
+                    }
+                });
+            }
         });
-
-        function unlockVideo(videoId){
-            alert("Redirect to payment for video " + videoId)
-        }
     </script>
