@@ -363,6 +363,22 @@
         "documentation": {}
     },
     {
+        "label": "FileResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponseForbidden",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "get_asgi_application",
         "importPath": "django.core.asgi",
         "description": "django.core.asgi",
@@ -516,7 +532,7 @@
         "kind": 6,
         "importPath": "videos.models",
         "description": "videos.models",
-        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='videos/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
+        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='protected_video/')\n    video_prev = models.FileField(upload_to='videos/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
         "detail": "videos.models",
         "documentation": {}
     },
@@ -525,16 +541,25 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.video_list, name ='video_list')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.stream_videos, name ='stream_videos'),\n    path('stream/<int:video_id>/', views.stream_video, name='stream_video'),\n]",
         "detail": "videos.urls",
         "documentation": {}
     },
     {
-        "label": "video_list",
+        "label": "stream_videos",
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    purchased_video_ids = []\n    if request.user.is_authenticated:\n        purchased_video_ids = Purchase.objects.filter(\n            user = request.user,\n            is_paid= True\n        ).values_list('video_id', flat=True)\n    return render(request, 'videos/video_list.html', {\n        'videos': videos,",
+        "peekOfCode": "def stream_videos(request):\n    videos = Video.objects.all()\n    purchased_video_ids = []\n    if request.user.is_authenticated:\n        purchased_video_ids = Purchase.objects.filter(\n            user = request.user,\n            is_paid= True\n        ).values_list('video_id', flat=True)\n    return render(request, 'videos/video_list.html', {\n        'videos': videos,",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "stream_video",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def stream_video(request, video_id):\n    video = Video.objects.get(id=video_id)\n    # check if user paid\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user = request.user,\n            video = video,\n            is_paid =True\n        ).exists()",
         "detail": "videos.views",
         "documentation": {}
     },

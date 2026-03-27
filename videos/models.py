@@ -5,7 +5,8 @@ from django.db import models
 class Video(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    video_file = models.FileField(upload_to='videos/')
+    video_file = models.FileField(upload_to='protected_video/')
+    video_prev = models.FileField(upload_to='videos/')
     preview_duration = models.IntegerField()
     price = models.DecimalField(max_digits = 6, decimal_places=2)
 
