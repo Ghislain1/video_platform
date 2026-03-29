@@ -89,6 +89,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -190,14 +214,6 @@
         "description": "django.contrib.auth.models",
         "isExtraImport": true,
         "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "Video",
-        "importPath": "videos.models",
-        "description": "videos.models",
-        "isExtraImport": true,
-        "detail": "videos.models",
         "documentation": {}
     },
     {
@@ -346,11 +362,27 @@
         "documentation": {}
     },
     {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "STRIPE_SECRET_KEY",
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
         "isExtraImport": true,
         "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPResponse",
+        "importPath": "http.client",
+        "description": "http.client",
+        "isExtraImport": true,
+        "detail": "http.client",
         "documentation": {}
     },
     {
@@ -372,6 +404,14 @@
     },
     {
         "label": "HttpResponseForbidden",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "StreamingHttpResponse",
         "importPath": "django.http",
         "description": "django.http",
         "isExtraImport": true,
@@ -519,6 +559,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "videos.migrations.0002_video_video_prev_alter_video_video_file",
+        "description": "videos.migrations.0002_video_video_prev_alter_video_video_file",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='video',\n            name='video_prev',\n            field=models.FileField(default=10, upload_to='videos/'),\n            preserve_default=False,",
+        "detail": "videos.migrations.0002_video_video_prev_alter_video_video_file",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "videos.migrations.0003_remove_video_video_prev",
+        "description": "videos.migrations.0003_remove_video_video_prev",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0002_video_video_prev_alter_video_video_file'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='video',\n            name='video_prev',\n        ),\n    ]",
+        "detail": "videos.migrations.0003_remove_video_video_prev",
+        "documentation": {}
+    },
+    {
         "label": "VideosConfig",
         "kind": 6,
         "importPath": "videos.apps",
@@ -532,7 +590,7 @@
         "kind": 6,
         "importPath": "videos.models",
         "description": "videos.models",
-        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='protected_video/')\n    video_prev = models.FileField(upload_to='videos/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
+        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='protected_video/')\n    preview_duration = models.IntegerField()\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
         "detail": "videos.models",
         "documentation": {}
     },
@@ -541,16 +599,16 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.stream_videos, name ='stream_videos'),\n    path('stream/<int:video_id>/', views.stream_video, name='stream_video'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.video_list, name ='video_list'),\n    path('video/<int:video_id>/', views.video_detail, name='video_detail'),\n    path('stream/<int:video_id>/', views.stream_video, name='stream_video'),\n]",
         "detail": "videos.urls",
         "documentation": {}
     },
     {
-        "label": "stream_videos",
+        "label": "video_list",
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def stream_videos(request):\n    videos = Video.objects.all()\n    purchased_video_ids = []\n    if request.user.is_authenticated:\n        purchased_video_ids = Purchase.objects.filter(\n            user = request.user,\n            is_paid= True\n        ).values_list('video_id', flat=True)\n    return render(request, 'videos/video_list.html', {\n        'videos': videos,",
+        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    return render(request, 'videos/video_list.html', {'videos': videos})\n# -------- videos Stream (source) ------\ndef stream_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    file_path = video.video_file.path\n    file_size = os.path.getsize(file_path)\n    # Check access\n    has_access = False",
         "detail": "videos.views",
         "documentation": {}
     },
@@ -559,7 +617,25 @@
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def stream_video(request, video_id):\n    video = Video.objects.get(id=video_id)\n    # check if user paid\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user = request.user,\n            video = video,\n            is_paid =True\n        ).exists()",
+        "peekOfCode": "def stream_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    file_path = video.video_file.path\n    file_size = os.path.getsize(file_path)\n    # Check access\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user=request.user,\n            video=video,",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "video_detail",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def video_detail(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user=request.user,\n            video=video,\n            is_paid = True\n        ).exists()\n    return render(render, 'videos/video_detail.html', {",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "pay_video",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def pay_video(request, video_id):\n    # implemet payment logic will be here \n    return HTTPResponse(\"Payment page for video {}\".format(video_id))",
         "detail": "videos.views",
         "documentation": {}
     },

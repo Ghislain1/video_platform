@@ -2,10 +2,11 @@
 {% for video in videos %}
     <div>
         <h3>{{ video.title }}</h3>
-        <p>{{ video.description }}</p>
-        <video width="400" controls data-preview="{{ video.preview_duration }}" data-video-id="{{ video.id }}" data-has-access="{% if video.id in purchased_video_ids %} true{% else %} false{% endif %}">
-            <source src="/stream/{{ video.id }} " type="video/mp4">
-        </video>
+        <p>{{ video.description|truncatewords:10 }}</p>
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <a href="/video/{{ video.id }}/">Watch Video</a>
+        </div>
+
         <p>Price: ${{ video.price }}</p>
         {% if video.id not in purchased_video_ids %}
             <a href="/pay/{{ video.id }}">Unlock Full Video</a>
