@@ -1,4 +1,26 @@
-<h1>Videos</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'videos/style.css' %}">
+
+
+
+<div class="container">
+    <h1> Video Library</h1>
+
+    <div class="grid">
+        {% for video in videos %}
+            <div class="card">
+                <h3>{{ video.title }}</h3>
+                <p>{{ video.description|truncatewords:12 }}</p>
+
+                <a href="/video/{{ video.id }}">Watch here..</a>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+
+
+<!-- <h1>Videos</h1>
 {% for video in videos %}
     <div>
         <h3>{{ video.title }}</h3>
@@ -32,4 +54,4 @@
                 });
             }
         });
-    </script>
+    </script> -->

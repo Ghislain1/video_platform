@@ -1,31 +1,15 @@
-<h2>{{ video.title }}</h2>
-<p>{{ video.description }}</p>
 
-{% if has_access %}
-  <p style="color:green;">✔ Full access unlocked</p>
-{% else %}
-  <p style="color:red;">🔒 Preview only (pay to unlock full video)</p>
-{% endif %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'videos/style.css' %}">
 
-<video width="600" controls>
-  <source src="/stream/{{ video.id }}/" type="video/mp4">
-</video>
+<div class="container">
+    <h1>{{ video.title }}</h1>
+    {% if has_access %}
+    <p class="unlocked">Full access unlocked</p>
+    {% else %}
+    <p class="locked">Preview only</p>
+    {% endif %}
 
-<p>Price: ${{ video.price }}</p>
-
-{% if not has_access %}
-  <a href="/pay/{{ video.id }}/">Unlock Full Video</a>
-{% endif %}
-
-<script>
-const video = document.querySelector("video");
-// const hasAccess = {{ has_access|yesno:"true,false" }};
-
-// if (!hasAccess) {
-//   video.addEventListener("seeking", function () {
-//     if (video.currentTime > 10) {  // limit to first 10 seconds (UX)
-//       video.currentTime = 10;
-//     }
-//   });
-//}
-</script>
+    <video width="100%" height="90%" controls style="border-radius:10px;">
+    <source src="/stream/{{ video.id }}/" type="video/mp4"></video>
+</div>
