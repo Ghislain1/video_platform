@@ -698,7 +698,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\nROOT_URLCONF = 'video_platform.urls'",
+        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'whitenoise.middleware.whiteNoiseMiddleware',\n]",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -752,7 +752,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -761,7 +761,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -770,7 +770,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -779,7 +779,7 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'",
         "detail": "video_platform.settings",
         "documentation": {}
     },
@@ -788,7 +788,34 @@
         "kind": 5,
         "importPath": "video_platform.settings",
         "description": "video_platform.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
+        "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "video_platform.settings",
+        "description": "video_platform.settings",
+        "peekOfCode": "STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's",
+        "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "video_platform.settings",
+        "description": "video_platform.settings",
+        "peekOfCode": "STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"",
+        "detail": "video_platform.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_STORAGE",
+        "kind": 5,
+        "importPath": "video_platform.settings",
+        "description": "video_platform.settings",
+        "peekOfCode": "STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
         "detail": "video_platform.settings",
         "documentation": {}
     },
