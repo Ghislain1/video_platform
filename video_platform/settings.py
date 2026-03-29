@@ -129,6 +129,8 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 #signin and sign out redirection
 
