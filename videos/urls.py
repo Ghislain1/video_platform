@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.video_list, name ='video_list'),
     path('video/<int:video_id>/', views.video_detail, name='video_detail'),
     path('stream/<int:video_id>/', views.stream_video, name='stream_video'),
+    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
 ]

@@ -1,4 +1,4 @@
-from http.client import HTTPResponse
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Video
 from payments.models import Purchase
@@ -73,7 +73,11 @@ def video_detail(request, video_id):
         'has_access': has_access
     })
 
+# ----- ADMIN VIEWS SIDE -----------
+def admin_dashboard(request):
+    return HttpResponse("Admin Dashboard")
+
 # ------- Payment PlaceHolder ------
 def pay_video(request, video_id):
     # implemet payment logic will be here 
-    return HTTPResponse("Payment page for video {}".format(video_id))
+    return HttpResponse("Payment page for video {}".format(video_id))

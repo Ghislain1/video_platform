@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lr#t_3o14rj4zk(orf9*kuib*vajrev=n3a+^x2_zmtg8mpvdg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # change to true during debugging
+DEBUG = True # change to true during debugging
 
-ALLOWED_HOSTS = ['.onrender.com']
-# ALLOWED_HOSTS = [] # change to ## during debugging
+#   ALLOWED_HOSTS = ['.onrender.com']
+ALLOWED_HOSTS = ['*'] # change to ## during debugging
 
 
 # Application definition
@@ -123,9 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static'),]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
