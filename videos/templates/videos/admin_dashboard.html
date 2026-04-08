@@ -1,0 +1,14 @@
+<h1>Admin DashBoard</h1>
+<a href="/dashboard/create/">Add Video</a>
+<h2>All videos</h2>
+{% for video in videos %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+    <h3>{{ video.title }}</h3>
+    <p>{{ video.description }}</p>
+    <p>Price: ${{ video.price }}</p>
+    <a href="/dashboard/edit/{{ video.id }}">Edit</a>
+    <a href="/dashboard/delete/{{ video.id }}">Delete</a>
+</div>
+{% empty %}
+ <p>No videos yet</p>
+{% endfor %}

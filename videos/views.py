@@ -1,9 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .forms import VideoForm
 from .models import Video
 from payments.models import Purchase
 import os
 from django.http import FileResponse, HttpResponseForbidden, StreamingHttpResponse
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 def video_list(request):
@@ -74,10 +77,45 @@ def video_detail(request, video_id):
     })
 
 # ----- ADMIN VIEWS SIDE -----------
+@staff_member_required  # this makes only users with 'is_staff=True' can access, others get redirected to login
 def admin_dashboard(request):
-    return HttpResponse("Admin Dashboard")
+    videos = Video.objects.all()
+
+    return render(request, 'videos/admin_dashboard.html', { 'videos': videos})
+
+# ------add video -------
+@staff_member_required
+def create_video(request):
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+            form = VideoForm()
+    return render(request, 'videos/form.html', {'form': form})
+
+# ------ edit video ---------
+@staff_member_required
+def edit_video(request, video_id):
+    video = get_object_or_404(Video, id=video_id)
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES, instance=video)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+        form = VideoForm(instance=video)
+    return render(request, 'videos/form.html', {'form': form})
+# ----- delete video ------
+@staff_member_required
+def delete_video(request, video_id):
+    video = get_object_or_404(Video, id=video_id)
+    video.delete()
+    return redirect('admin_dashboard')
+
 
 # ------- Payment PlaceHolder ------
 def pay_video(request, video_id):
-    # implemet payment logic will be here 
+    # implement payment logic will be here
     return HttpResponse("Payment page for video {}".format(video_id))
