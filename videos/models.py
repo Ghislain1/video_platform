@@ -6,7 +6,7 @@ class Video(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     video_file = models.FileField(upload_to='protected_video/')
-    preview_duration = models.IntegerField()
+    preview_duration = models.IntegerField(default=10)
     price = models.DecimalField(max_digits = 6, decimal_places=2)
 
     def __str__(self):
