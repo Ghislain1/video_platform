@@ -1,6 +1,69 @@
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'videos/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video.title}}</title>
+    <link rel="stylesheet" href="{% static 'videos/style.css' %}">
+</head>
+<body>
+    <!-- NavBar-->
+    <div class="navbar">
+        <div class="logo">NEXT_VIDEO</div>
+
+        <div class="nav-link">
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+    <!-- VIDEO SECTION -->
+    <div class="detail-container">
+        <!--- Main Video -->
+        <div class="main-video">
+            <video controls width="50%" height="50%">
+                <source src="{{ video.video_file.url }}">
+            </video>
+
+            <div class="video-meta">
+                <h1>{{ video.title }}</h1>
+
+                <p class="price">
+                    Premium Access ${{ video.price }}
+                </p>
+
+                <p>
+                    {{ video.description }}
+                </p>
+
+                <!-- Unlock -->
+                <a class="unlock-btn" href="/pay/{{ video.id }}"> Unlock Full Video</a>
+            </div>
+        </div>
+
+        <!-- SideBar -->
+        <div class="related-videos">
+            <h2>More Video</h2>
+            {% for v in related_videos %}
+            <a class="related-card" href="/video/{{ v.id }}/">
+                <video>
+                    <source src="{{ v.video_file.url }}">
+                </video>
+                <p>{{ v.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+<!-- <link rel="stylesheet" href="{% static 'videos/style.css' %}">
 
 <div class="container">
     <h1>{{ video.title }}</h1>
@@ -12,4 +75,4 @@
 
     <video width="100%" height="90%" controls style="border-radius:10px;">
     <source src="/stream/{{ video.id }}/" type="video/mp4"></video>
-</div>
+</div> -->

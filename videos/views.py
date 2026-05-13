@@ -64,6 +64,8 @@ def stream_video(request, video_id):
 def video_detail(request, video_id):
     video = get_object_or_404(Video, id=video_id)
 
+    related_videos = Video.objects.exclude(id=video.id)[:5]
+
     has_access = False
     if request.user.is_authenticated:
         has_access = Purchase.objects.filter(
@@ -73,7 +75,9 @@ def video_detail(request, video_id):
         ).exists()
     return render(render, 'videos/video_detail.html', {
         'video': video,
-        'has_access': has_access
+        'has_access': has_access,
+        'related_videos': related_videos
+        
     })
 
 # ----- ADMIN VIEWS SIDE -----------
