@@ -1,16 +1,20 @@
-# Python
-/__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# Python cache files
+__pycache__/
+*.py[cod]
+*.py.class
+*$py.class
 
-# Django
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Django specific files
 *.log
-videoplatform.sqlite3
 db.sqlite3
-.vscode/
 
-# Migrations cache
-*/migrations/__pycache__
-*.pyc
-*.pyc
+# IDE specific files
+.vscode/
+.idea/
+
+project documentation.md

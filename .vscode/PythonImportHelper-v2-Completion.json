@@ -1,469 +1,11 @@
 [
     {
-        "label": "django.db.models.deletion",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
-        "label": "Purchase",
-        "importPath": "payments.models",
-        "description": "payments.models",
-        "isExtraImport": true,
-        "detail": "payments.models",
-        "documentation": {}
-    },
-    {
-        "label": "Purchase",
-        "importPath": "payments.models",
-        "description": "payments.models",
-        "isExtraImport": true,
-        "detail": "payments.models",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
-        "isExtraImport": true,
-        "detail": "django.apps",
-        "documentation": {}
-    },
-    {
-        "label": "User",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "Video",
-        "importPath": "videos.models",
-        "description": "videos.models",
-        "isExtraImport": true,
-        "detail": "videos.models",
-        "documentation": {}
-    },
-    {
-        "label": "Video",
-        "importPath": "videos.models",
-        "description": "videos.models",
-        "isExtraImport": true,
-        "detail": "videos.models",
-        "documentation": {}
-    },
-    {
-        "label": "Video",
-        "importPath": "videos.models",
-        "description": "videos.models",
-        "isExtraImport": true,
-        "detail": "videos.models",
-        "documentation": {}
-    },
-    {
-        "label": "TestCase",
-        "importPath": "django.test",
-        "description": "django.test",
-        "isExtraImport": true,
-        "detail": "django.test",
-        "documentation": {}
-    },
-    {
-        "label": "TestCase",
-        "importPath": "django.test",
-        "description": "django.test",
-        "isExtraImport": true,
-        "detail": "django.test",
-        "documentation": {}
-    },
-    {
-        "label": "TestCase",
-        "importPath": "django.test",
-        "description": "django.test",
-        "isExtraImport": true,
-        "detail": "django.test",
-        "documentation": {}
-    },
-    {
-        "label": "TestCase",
-        "importPath": "django.test",
-        "description": "django.test",
-        "isExtraImport": true,
-        "detail": "django.test",
-        "documentation": {}
-    },
-    {
-        "label": "urlpatterns",
-        "importPath": "videos.urls",
-        "description": "videos.urls",
-        "isExtraImport": true,
-        "detail": "videos.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "include",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "stripe",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "stripe",
-        "description": "stripe",
-        "detail": "stripe",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "STRIPE_SECRET_KEY",
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "isExtraImport": true,
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "forms",
-        "importPath": "django",
-        "description": "django",
-        "isExtraImport": true,
-        "detail": "django",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "FileResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponseForbidden",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "StreamingHttpResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "staff_member_required",
-        "importPath": "django.contrib.admin.views.decorators",
-        "description": "django.contrib.admin.views.decorators",
-        "isExtraImport": true,
-        "detail": "django.contrib.admin.views.decorators",
         "documentation": {}
     },
     {
@@ -483,11 +25,27 @@
         "documentation": {}
     },
     {
-        "label": "static",
-        "importPath": "django.conf.urls.static",
-        "description": "django.conf.urls.static",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.conf.urls.static",
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -496,6 +54,30 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -508,129 +90,174 @@
         "documentation": {}
     },
     {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "payments.migrations.0001_initial",
-        "description": "payments.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('videos', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Purchase',\n            fields=[",
-        "detail": "payments.migrations.0001_initial",
+        "label": "application",
+        "kind": 5,
+        "importPath": "config.asgi",
+        "description": "config.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "config.asgi",
         "documentation": {}
     },
     {
-        "label": "PaymentsConfig",
-        "kind": 6,
-        "importPath": "payments.apps",
-        "description": "payments.apps",
-        "peekOfCode": "class PaymentsConfig(AppConfig):\n    name = 'payments'",
-        "detail": "payments.apps",
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-*f)&$ah26xi9(cbf=1(#xve(-*6s8igd#!3$us076ti&2b1=f#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "config.settings",
         "documentation": {}
     },
     {
-        "label": "Purchase",
-        "kind": 6,
-        "importPath": "payments.models",
-        "description": "payments.models",
-        "peekOfCode": "class Purchase(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    video = models.ForeignKey(Video, on_delete=models.CASCADE)\n    stripe_session_id = models.CharField(max_length=255)\n    is_paid = models.BooleanField(default=False)\n    def __str__(self):\n        return f\"{self.user} - {self.video}\"",
-        "detail": "payments.models",
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-*f)&$ah26xi9(cbf=1(#xve(-*6s8igd#!3$us076ti&2b1=f#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',\n    'videos',\n]",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\nROOT_URLCONF = 'config.urls'",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "ROOT_URLCONF = 'config.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'config.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/6.0/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "STATIC_URL = 'static/'",
+        "detail": "config.settings",
         "documentation": {}
     },
     {
         "label": "urlpatterns",
         "kind": 5,
-        "importPath": "payments.urls",
-        "description": "payments.urls",
-        "peekOfCode": "urlpatterns = [\n    path('pay/<int:video_id>/', views.create_checkout_session, name='pay'),\n    path('payment-success/', views.payment_success, name='success'),\n    path('payment-cancel', views.payment_cancel, name='cancel'),\n]",
-        "detail": "payments.urls",
+        "importPath": "config.urls",
+        "description": "config.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "detail": "config.urls",
         "documentation": {}
     },
     {
-        "label": "create_checkout_session",
-        "kind": 2,
-        "importPath": "payments.views",
-        "description": "payments.views",
-        "peekOfCode": "def create_checkout_session(request, video_id):\n    video = get_object_or_404(Video, id= video_id)\n    session = stripe.checkout.Session.create(\n    payment_method_types=['card'],\n    line_items=[{\n        'price_data': {\n            'currency': 'cad',\n            'product_data': {\n                'name': video.title,\n            },",
-        "detail": "payments.views",
-        "documentation": {}
-    },
-    {
-        "label": "payment_success",
-        "kind": 2,
-        "importPath": "payments.views",
-        "description": "payments.views",
-        "peekOfCode": "def payment_success(request):\n    session_id = request.GET.get('session_id')\n    purchase = Purchase.objects.filter( stripe_session_id = session_id).first()\n    if purchase:\n        purchase.is_paid = True\n        purchase.save()\n    return redirect('/')\ndef payment_cancel(request):\n    return redirect('/')",
-        "detail": "payments.views",
-        "documentation": {}
-    },
-    {
-        "label": "payment_cancel",
-        "kind": 2,
-        "importPath": "payments.views",
-        "description": "payments.views",
-        "peekOfCode": "def payment_cancel(request):\n    return redirect('/')",
-        "detail": "payments.views",
-        "documentation": {}
-    },
-    {
-        "label": "stripe.api_key",
+        "label": "application",
         "kind": 5,
-        "importPath": "payments.views",
-        "description": "payments.views",
-        "peekOfCode": "stripe.api_key = settings.STRIPE_SECRET_KEY\ndef create_checkout_session(request, video_id):\n    video = get_object_or_404(Video, id= video_id)\n    session = stripe.checkout.Session.create(\n    payment_method_types=['card'],\n    line_items=[{\n        'price_data': {\n            'currency': 'cad',\n            'product_data': {\n                'name': video.title,",
-        "detail": "payments.views",
-        "documentation": {}
-    },
-    {
-        "label": "PurchasesConfig",
-        "kind": 6,
-        "importPath": "purchases.apps",
-        "description": "purchases.apps",
-        "peekOfCode": "class PurchasesConfig(AppConfig):\n    name = 'purchases'",
-        "detail": "purchases.apps",
-        "documentation": {}
-    },
-    {
-        "label": "UsersConfig",
-        "kind": 6,
-        "importPath": "users.apps",
-        "description": "users.apps",
-        "peekOfCode": "class UsersConfig(AppConfig):\n    name = 'users'",
-        "detail": "users.apps",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "videos.migrations.0001_initial",
-        "description": "videos.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Video',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('title', models.CharField(max_length=255)),",
-        "detail": "videos.migrations.0001_initial",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "videos.migrations.0002_video_video_prev_alter_video_video_file",
-        "description": "videos.migrations.0002_video_video_prev_alter_video_video_file",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='video',\n            name='video_prev',\n            field=models.FileField(default=10, upload_to='videos/'),\n            preserve_default=False,",
-        "detail": "videos.migrations.0002_video_video_prev_alter_video_video_file",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "videos.migrations.0003_remove_video_video_prev",
-        "description": "videos.migrations.0003_remove_video_video_prev",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0002_video_video_prev_alter_video_video_file'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='video',\n            name='video_prev',\n        ),\n    ]",
-        "detail": "videos.migrations.0003_remove_video_video_prev",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "videos.migrations.0004_alter_video_preview_duration",
-        "description": "videos.migrations.0004_alter_video_preview_duration",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0003_remove_video_video_prev'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='video',\n            name='preview_duration',\n            field=models.IntegerField(default=10),\n        ),",
-        "detail": "videos.migrations.0004_alter_video_preview_duration",
+        "importPath": "config.wsgi",
+        "description": "config.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "config.wsgi",
         "documentation": {}
     },
     {
@@ -643,380 +270,11 @@
         "documentation": {}
     },
     {
-        "label": "VideoForm",
-        "kind": 6,
-        "importPath": "videos.forms",
-        "description": "videos.forms",
-        "peekOfCode": "class VideoForm(forms.ModelForm):\n    class Meta:\n        model = Video\n        fields = ['title', 'description', 'video_file', 'price']",
-        "detail": "videos.forms",
-        "documentation": {}
-    },
-    {
-        "label": "Video",
-        "kind": 6,
-        "importPath": "videos.models",
-        "description": "videos.models",
-        "peekOfCode": "class Video(models.Model):\n    title = models.CharField(max_length=255)\n    description = models.TextField()\n    video_file = models.FileField(upload_to='protected_video/')\n    preview_duration = models.IntegerField(default=10)\n    price = models.DecimalField(max_digits = 6, decimal_places=2)\n    def __str__(self):\n        return self.title",
-        "detail": "videos.models",
-        "documentation": {}
-    },
-    {
-        "label": "urlpatterns",
-        "kind": 5,
-        "importPath": "videos.urls",
-        "description": "videos.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.video_list, name ='video_list'),\n    path('video/<int:video_id>/', views.video_detail, name='video_detail'),\n    path('stream/<int:video_id>/', views.stream_video, name='stream_video'),\n    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),\n    path('dashboard/create/', views.create_video, name='create_video'),\n    path('dashboard/edit/<int:video_id>/', views.edit_video, name='edit_video'),\n    path('dashboard/delete/<int:video_id>/', views.delete_video, name='delete_video'),\n]",
-        "detail": "videos.urls",
-        "documentation": {}
-    },
-    {
-        "label": "video_list",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def video_list(request):\n    videos = Video.objects.all()\n    return render(request, 'videos/video_list.html', {'videos': videos})\n# -------- videos Stream (source) ------\ndef stream_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    file_path = video.video_file.path\n    file_size = os.path.getsize(file_path)\n    # Check access\n    has_access = False",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "stream_video",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def stream_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    file_path = video.video_file.path\n    file_size = os.path.getsize(file_path)\n    # Check access\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user=request.user,\n            video=video,",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "video_detail",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def video_detail(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    has_access = False\n    if request.user.is_authenticated:\n        has_access = Purchase.objects.filter(\n            user=request.user,\n            video=video,\n            is_paid = True\n        ).exists()\n    return render(render, 'videos/video_detail.html', {",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "admin_dashboard",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def admin_dashboard(request):\n    videos = Video.objects.all()\n    return render(request, 'videos/admin_dashboard.html', { 'videos': videos})\n# ------add video -------\n@staff_member_required\ndef create_video(request):\n    if request.method == 'POST':\n        form = VideoForm(request.POST, request.FILES)\n        if form.is_valid():\n            form.save()",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "create_video",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def create_video(request):\n    if request.method == 'POST':\n        form = VideoForm(request.POST, request.FILES)\n        if form.is_valid():\n            form.save()\n            return redirect('admin_dashboard')\n    else:\n            form = VideoForm()\n    return render(request, 'videos/form.html', {'form': form})\n# ------ edit video ---------",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "edit_video",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def edit_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    if request.method == 'POST':\n        form = VideoForm(request.POST, request.FILES, instance=video)\n        if form.is_valid():\n            form.save()\n            return redirect('admin_dashboard')\n    else:\n        form = VideoForm(instance=video)\n    return render(request, 'videos/form.html', {'form': form})",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "delete_video",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def delete_video(request, video_id):\n    video = get_object_or_404(Video, id=video_id)\n    video.delete()\n    return redirect('admin_dashboard')\n# ------- Payment PlaceHolder ------\ndef pay_video(request, video_id):\n    # implement payment logic will be here\n    return HttpResponse(\"Payment page for video {}\".format(video_id))",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "pay_video",
-        "kind": 2,
-        "importPath": "videos.views",
-        "description": "videos.views",
-        "peekOfCode": "def pay_video(request, video_id):\n    # implement payment logic will be here\n    return HttpResponse(\"Payment page for video {}\".format(video_id))",
-        "detail": "videos.views",
-        "documentation": {}
-    },
-    {
-        "label": "application",
-        "kind": 5,
-        "importPath": "video_platform.asgi",
-        "description": "video_platform.asgi",
-        "peekOfCode": "application = get_asgi_application()",
-        "detail": "video_platform.asgi",
-        "documentation": {}
-    },
-    {
-        "label": "BASE_DIR",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-lr#t_3o14rj4zk(orf9*kuib*vajrev=n3a+^x2_zmtg8mpvdg'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True # change to true during debugging\n#   ALLOWED_HOSTS = ['.onrender.com']\nALLOWED_HOSTS = ['*'] # change to ## during debugging\n# Application definition",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "SECRET_KEY",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-lr#t_3o14rj4zk(orf9*kuib*vajrev=n3a+^x2_zmtg8mpvdg'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True # change to true during debugging\n#   ALLOWED_HOSTS = ['.onrender.com']\nALLOWED_HOSTS = ['*'] # change to ## during debugging\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "DEBUG",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "DEBUG = True # change to true during debugging\n#   ALLOWED_HOSTS = ['.onrender.com']\nALLOWED_HOSTS = ['*'] # change to ## during debugging\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "ALLOWED_HOSTS",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*'] # change to ## during debugging\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'users',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "INSTALLED_APPS",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'users',\n    'videos',\n    'payments',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "MIDDLEWARE",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'whitenoise.middleware.WhiteNoiseMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "ROOT_URLCONF",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "ROOT_URLCONF = 'video_platform.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "TEMPLATES",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "WSGI_APPLICATION",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'video_platform.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/6.0/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'videoplatform.sqlite3',\n    }\n}\n# Password validation",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "DATABASES",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'videoplatform.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "AUTH_PASSWORD_VALIDATORS",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "LANGUAGE_CODE",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "TIME_ZONE",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "USE_I18N",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "USE_TZ",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = '/static/'\n#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STATIC_URL",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\n#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "#STATIC_URL",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "#STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')\nSTATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STATICFILES_DIRS",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'videos/static/'),]\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STATICFILES_STORAGE",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'\nSTATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STATICFILES_ROOT",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STATIC_ROOT",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n#signin and sign out redirection\nLOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "LOGIN_REDIRECT_URL",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "LOGIN_REDIRECT_URL = '/'\nLOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "LOGOUT_REDIRECT_URL",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "LOGOUT_REDIRECT_URL = '/'\n# enable media files here\nMEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "MEDIA_URL",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "MEDIA_ROOT",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "MEDIA_ROOT = 'media/'\n# stripe key's\nSTRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STRIPE_PUBLIC_KEY",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STRIPE_PUBLIC_KEY = \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\nSTRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "STRIPE_SECRET_KEY",
-        "kind": 5,
-        "importPath": "video_platform.settings",
-        "description": "video_platform.settings",
-        "peekOfCode": "STRIPE_SECRET_KEY = \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\"",
-        "detail": "video_platform.settings",
-        "documentation": {}
-    },
-    {
-        "label": "urlpatterns",
-        "kind": 5,
-        "importPath": "video_platform.urls",
-        "description": "video_platform.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('videos.urls')),\n    path('accounts/', include('django.contrib.auth.urls')),\n    path('', include('payments.urls')),\n]\nurlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
-        "detail": "video_platform.urls",
-        "documentation": {}
-    },
-    {
-        "label": "application",
-        "kind": 5,
-        "importPath": "video_platform.wsgi",
-        "description": "video_platform.wsgi",
-        "peekOfCode": "application = get_wsgi_application()",
-        "detail": "video_platform.wsgi",
-        "documentation": {}
-    },
-    {
         "label": "main",
         "kind": 2,
         "importPath": "manage",
         "description": "manage",
-        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'video_platform.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
         "detail": "manage",
         "documentation": {}
     }
