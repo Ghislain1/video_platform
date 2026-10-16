@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ video.title }} | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/video_detail.css' %}">
+</head>
+
+<body>
+
+<header class="site-header">
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+
+    <a href="{% url 'videos:public_library' %}">
+        Browse Videos
+    </a>
+</header>
+
+<main class="container">
+
+    <a href="{% url 'videos:public_library' %}" class="back-link">
+        ← Back to Videos
+    </a>
+
+    <article class="video-detail">
+
+        <div class="video-player">
+
+            {% if video.access_type == "free" %}
+
+                <video controls preload="metadata"
+                       poster="{% if video.thumbnail %}{{ video.thumbnail.url }}{% endif %}">
+                    <source src="{{ video.video_file.url }}">
+                    Your browser does not support HTML video.
+                </video>
+
+            {% else %}
+
+                {% if video.thumbnail %}
+                    <img src="{{ video.thumbnail.url }}"
+                         alt="{{ video.title }}"
+                         class="paid-thumbnail">
+                {% endif %}
+
+                <div class="paid-message">
+                    <h2>Premium Video</h2>
+                    <p>
+                        This video requires payment before you can watch it.
+                    </p>
+                    <p class="price">${{ video.price }}</p>
+                    <button type="button" disabled>
+                        Payment Coming Soon
+                    </button>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="video-content">
+
+            <span class="category">
+                {{ video.category.name }}
+            </span>
+
+            <h1>{{ video.title }}</h1>
+
+            <p class="description">
+                {{ video.description|linebreaksbr }}
+            </p>
+
+            <div class="metadata">
+                {% if video.access_type == "free" %}
+                    <span class="free">Free video</span>
+                {% else %}
+                    <span class="paid">
+                        Paid video — ${{ video.price }}
+                    </span>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <p>&copy; {% now "Y" %} VideoHub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

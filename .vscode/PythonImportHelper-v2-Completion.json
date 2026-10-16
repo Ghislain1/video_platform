@@ -620,6 +620,24 @@
         "documentation": {}
     },
     {
+        "label": "public_video_library",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def public_video_library(request):\n    videos = Video.objects.filter(\n        is_published=True\n    ).select_related(\"category\")\n    categories = Category.objects.all()\n    search_query = request.GET.get(\"q\", \"\").strip()\n    category_id = request.GET.get(\"category\", \"\").strip()\n    access_type = request.GET.get(\"access\", \"\").strip()\n    # Search by title or description\n    if search_query:",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "public_video_detail",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def public_video_detail(request, video_id):\n    video = get_object_or_404(\n        Video.objects.select_related(\"category\"),\n        pk=video_id,\n        is_published=True\n    )\n    return render(\n        request,\n        \"videos/video_detail.html\",\n        {\"video\": video}",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "manage",

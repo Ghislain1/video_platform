@@ -242,3 +242,57 @@ def delete_category(request, category_id):
         messages.success(request, "Category deleted successfully.")
 
     return redirect("videos:manage_categories")
+
+def public_video_library(request):
+    videos = Video.objects.filter(
+        is_published=True
+    ).select_related("category")
+
+    categories = Category.objects.all()
+
+    search_query = request.GET.get("q", "").strip()
+    category_id = request.GET.get("category", "").strip()
+    access_type = request.GET.get("access", "").strip()
+
+    # Search by title or description
+    if search_query:
+        videos = videos.filter(
+            Q(title__icontains=search_query)
+            | Q(description__icontains=search_query)
+        )
+
+    # Filter by category
+    if category_id.isdigit():
+        videos = videos.filter(category_id=int(category_id))
+
+    # Filter free or paid videos
+    if access_type in ["free", "paid"]:
+        videos = videos.filter(access_type=access_type)
+
+    context = {
+        "videos": videos,
+        "categories": categories,
+        "search_query": search_query,
+        "selected_category": category_id,
+        "selected_access": access_type,
+    }
+
+    return render(
+        request,
+        "videos/public_library.html",
+        context
+    )
+
+
+def public_video_detail(request, video_id):
+    video = get_object_or_404(
+        Video.objects.select_related("category"),
+        pk=video_id,
+        is_published=True
+    )
+
+    return render(
+        request,
+        "videos/video_detail.html",
+        {"video": video}
+    )

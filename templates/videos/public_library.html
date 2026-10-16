@@ -1,0 +1,223 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video Library</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/public_library.css' %}">
+</head>
+
+<body>
+
+<header class="site-header">
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+
+    <nav>
+        <a href="{% url 'videos:public_library' %}">Home</a>
+        <a href="{% url 'videos:public_library' %}">Videos</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <h1>Discover Videos</h1>
+        <p>Explore tutorials, lessons, and entertainment.</p>
+
+        <form method="get" class="search-form">
+            <input
+                type="search"
+                name="q"
+                placeholder="Search videos..."
+                value="{{ search_query }}"
+            >
+
+            {% if selected_category %}
+                <input
+                    type="hidden"
+                    name="category"
+                    value="{{ selected_category }}"
+                >
+            {% endif %}
+
+            {% if selected_access %}
+                <input
+                    type="hidden"
+                    name="access"
+                    value="{{ selected_access }}"
+                >
+            {% endif %}
+
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <section class="filters">
+        <form method="get">
+
+            <input
+                type="search"
+                name="q"
+                placeholder="Search by title or description"
+                value="{{ search_query }}"
+            >
+
+            <select name="category">
+                <option value="">All categories</option>
+
+                {% for category in categories %}
+                    <option
+                        value="{{ category.id }}"
+                        {% if selected_category == category.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <select name="access">
+                <option value="">All videos</option>
+
+                <option
+                    value="free"
+                    {% if selected_access == "free" %}selected{% endif %}
+                >
+                    Free
+                </option>
+
+                <option
+                    value="paid"
+                    {% if selected_access == "paid" %}selected{% endif %}
+                >
+                    Paid
+                </option>
+            </select>
+
+            <button type="submit">Apply Filters</button>
+
+            <a href="{% url 'videos:public_library' %}"
+               class="reset-link">
+                Reset
+            </a>
+
+        </form>
+    </section>
+
+    <section class="library-section">
+
+        <div class="section-heading">
+            <h2>Our Videos</h2>
+            <span>{{ videos|length }} video{{ videos|length|pluralize }}</span>
+        </div>
+
+        {% if videos %}
+
+            <div class="video-grid">
+
+                {% for video in videos %}
+
+                    <article class="video-card">
+
+                        <a href="{% url 'videos:video_detail' video.id %}"
+                           class="thumbnail-link">
+
+                            {% if video.thumbnail %}
+                                <img
+                                    src="{{ video.thumbnail.url }}"
+                                    alt="{{ video.title }}"
+                                    class="thumbnail"
+                                >
+                            {% else %}
+                                <div class="thumbnail placeholder">
+                                    <span>▶</span>
+                                    <p>No thumbnail available</p>
+                                </div>
+                            {% endif %}
+
+                            <span class="access-badge {{ video.access_type }}">
+                                {% if video.access_type == "free" %}
+                                    FREE
+                                {% else %}
+                                    PAID
+                                {% endif %}
+                            </span>
+
+                        </a>
+
+                        <div class="video-info">
+
+                            <span class="category-name">
+                                {{ video.category.name }}
+                            </span>
+
+                            <h3>
+                                <a href="{% url 'videos:video_detail' video.id %}">
+                                    {{ video.title }}
+                                </a>
+                            </h3>
+
+                            <p class="description">
+                                {{ video.description|truncatechars:120 }}
+                            </p>
+
+                            <div class="video-footer">
+
+                                {% if video.access_type == "free" %}
+                                    <span class="price free-price">Free</span>
+                                {% else %}
+                                    <span class="price">
+                                        ${{ video.price }}
+                                    </span>
+                                {% endif %}
+
+                                <a
+                                    href="{% url 'videos:video_detail' video.id %}"
+                                    class="watch-link"
+                                >
+                                    View Video →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+                <h3>No videos found</h3>
+                <p>
+                    Try another search term or choose a different category.
+                </p>
+
+                <a href="{% url 'videos:public_library' %}">
+                    View all videos
+                </a>
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>&copy; {% now "Y" %} VideoHub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
