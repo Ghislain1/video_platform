@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/auth.css' %}">
+</head>
+
+<body>
+
+<header class="account-header">
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+
+    <a href="{% url 'videos:public_library' %}">
+        Browse Videos
+    </a>
+</header>
+
+<main class="account-container">
+
+    <div class="account-card">
+
+        <h1>My Account</h1>
+
+        <p>Welcome, {{ account_user.username }}!</p>
+
+        <div class="account-details">
+            <p>
+                <strong>Username:</strong>
+                {{ account_user.username }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ account_user.email|default:"Not provided" }}
+            </p>
+
+            <p>
+                <strong>Member since:</strong>
+                {{ account_user.date_joined|date:"F j, Y" }}
+            </p>
+        </div>
+
+        <a href="{% url 'videos:public_library' %}"
+           class="btn-primary">
+            Browse Videos
+        </a>
+
+        <form method="post"
+              action="{% url 'videos:logout' %}"
+              class="logout-form">
+            {% csrf_token %}
+
+            <button type="submit" class="btn-secondary">
+                Log Out
+            </button>
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>

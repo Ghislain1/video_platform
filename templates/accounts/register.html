@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/auth.css' %}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+
+    <div class="auth-card">
+
+        <h1>Create your account</h1>
+        <p class="subtitle">Join VideoHub and explore our video library.</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="help-text">
+                            {{ field.help_text|safe }}
+                        </div>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-primary">
+                Create Account
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Already have an account?
+            <a href="{% url 'videos:login' %}">Log in</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

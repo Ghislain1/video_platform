@@ -18,4 +18,9 @@ urlpatterns = [
 
     path("", views.public_video_library, name="public_library"),
     path("video/<int:video_id>/", views.public_video_detail, name="video_detail"),
+
+    path("register/", views.register_view, name="register"),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+    path("account/", views.account_view, name="account"),
 ]

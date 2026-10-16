@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/auth.css' %}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+
+    <div class="auth-card">
+
+        <h1>Welcome back</h1>
+        <p class="subtitle">Log in to your VideoHub account.</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="error">
+                Invalid username or password.
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+                {% for error in form.username.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">
+                    Password
+                </label>
+
+                {{ form.password }}
+
+                {% for error in form.password.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Log In
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="{% url 'videos:register' %}">Create one</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

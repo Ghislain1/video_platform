@@ -170,6 +170,30 @@
         "documentation": {}
     },
     {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "AuthenticationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
         "label": "ValidationError",
         "importPath": "django.core.exceptions",
         "description": "django.core.exceptions",
@@ -187,6 +211,14 @@
     },
     {
         "label": "user_passes_test",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
         "importPath": "django.contrib.auth.decorators",
         "description": "django.contrib.auth.decorators",
         "isExtraImport": true,
@@ -215,6 +247,30 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "url_has_allowed_host_and_scheme",
+        "importPath": "django.utils.http",
+        "description": "django.utils.http",
+        "isExtraImport": true,
+        "detail": "django.utils.http",
         "documentation": {}
     },
     {
@@ -485,6 +541,15 @@
         "documentation": {}
     },
     {
+        "label": "RegistrationForm",
+        "kind": 6,
+        "importPath": "videos.forms",
+        "description": "videos.forms",
+        "peekOfCode": "class RegistrationForm(UserCreationForm):\n    email = forms.EmailField(\n        required=True,\n        widget=forms.EmailInput(attrs={\n            \"class\": \"form-control\",\n            \"placeholder\": \"Enter your email\"\n        })\n    )\n    class Meta:\n        model = User",
+        "detail": "videos.forms",
+        "documentation": {}
+    },
+    {
         "label": "Category",
         "kind": 6,
         "importPath": "videos.models",
@@ -634,6 +699,42 @@
         "importPath": "videos.views",
         "description": "videos.views",
         "peekOfCode": "def public_video_detail(request, video_id):\n    video = get_object_or_404(\n        Video.objects.select_related(\"category\"),\n        pk=video_id,\n        is_published=True\n    )\n    return render(\n        request,\n        \"videos/video_detail.html\",\n        {\"video\": video}",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "register_view",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def register_view(request):\n    if request.user.is_authenticated:\n        return redirect(\"videos:account\")\n    if request.method == \"POST\":\n        form = RegistrationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            login(request, user)\n            messages.success(\n                request,",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_view",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def login_view(request):\n    if request.user.is_authenticated:\n        return redirect(\"videos:account\")\n    if request.method == \"POST\":\n        form = AuthenticationForm(\n            request,\n            data=request.POST\n        )\n        if form.is_valid():\n            user = form.get_user()",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "account_view",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def account_view(request):\n    return render(\n        request,\n        \"accounts/account.html\",\n        {\"account_user\": request.user}\n    )\n@login_required(login_url=\"videos:login\")\n@require_POST\ndef logout_view(request):\n    logout(request)",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout_view",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def logout_view(request):\n    logout(request)\n    messages.success(request, \"You have been logged out successfully.\")\n    return redirect(\"videos:public_library\")",
         "detail": "videos.views",
         "documentation": {}
     },
