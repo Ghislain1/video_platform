@@ -41,6 +41,22 @@
         "documentation": {}
     },
     {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -57,11 +73,84 @@
         "documentation": {}
     },
     {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "Category",
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "isExtraImport": true,
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "Video",
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "isExtraImport": true,
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
         "isExtraImport": true,
         "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
         "documentation": {}
     },
     {
@@ -78,6 +167,22 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "user_passes_test",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
         "documentation": {}
     },
     {
@@ -130,7 +235,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'videos',",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -139,7 +244,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',\n    'videos',\n]",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'videos',\n]\nMIDDLEWARE = [",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -157,7 +262,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "ROOT_URLCONF = 'config.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "ROOT_URLCONF = 'config.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -166,7 +271,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR / 'templates'],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -202,7 +307,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -211,7 +316,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -220,7 +325,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -229,7 +334,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -238,7 +343,16 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "STATIC_URL = 'static/'",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -247,7 +361,7 @@
         "kind": 5,
         "importPath": "config.urls",
         "description": "config.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('videos.urls')),\n]",
         "detail": "config.urls",
         "documentation": {}
     },
@@ -261,12 +375,93 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "videos.migrations.0001_initial",
+        "description": "videos.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Category',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(max_length=100, unique=True)),",
+        "detail": "videos.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "CategoryAdmin",
+        "kind": 6,
+        "importPath": "videos.admin",
+        "description": "videos.admin",
+        "peekOfCode": "class CategoryAdmin(admin.ModelAdmin):\n    list_display = (\"name\", \"created_at\")\n    search_fields = (\"name\",)\n@admin.register(Video)\nclass VideoAdmin(admin.ModelAdmin):\n    list_display = (\"title\", \"category\", \"access_type\", \"price\", \"is_published\", \"created_at\")\n    list_filter = (\"category\", \"access_type\", \"is_published\")\n    search_fields = (\"title\", \"description\")\n    readonly_fields = (\"created_at\", \"updated_at\")\n    fieldsets = (",
+        "detail": "videos.admin",
+        "documentation": {}
+    },
+    {
+        "label": "VideoAdmin",
+        "kind": 6,
+        "importPath": "videos.admin",
+        "description": "videos.admin",
+        "peekOfCode": "class VideoAdmin(admin.ModelAdmin):\n    list_display = (\"title\", \"category\", \"access_type\", \"price\", \"is_published\", \"created_at\")\n    list_filter = (\"category\", \"access_type\", \"is_published\")\n    search_fields = (\"title\", \"description\")\n    readonly_fields = (\"created_at\", \"updated_at\")\n    fieldsets = (\n        (\"Video Information\", { \"fields\": (\"title\", \"description\", \"category\", \"video_file\", \"thumbnail\")}),\n        (\"Access and pricing\", { \"fields\": (\"access_type\", \"price\")}),\n        (\"Publication\", { \"fields\": (\"is_published\", \"created_at\", \"updated_at\")}),\n    )",
+        "detail": "videos.admin",
+        "documentation": {}
+    },
+    {
         "label": "VideosConfig",
         "kind": 6,
         "importPath": "videos.apps",
         "description": "videos.apps",
         "peekOfCode": "class VideosConfig(AppConfig):\n    name = 'videos'",
         "detail": "videos.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Category",
+        "kind": 6,
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "peekOfCode": "class Category(models.Model):\n    name = models.CharField(max_length=100, unique=True)\n    description = models.TextField(blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        ordering = [\"name\"]\n        verbose_name_plural = \"Categories\"\n    def __str__(self):\n        return self.name\nclass Video(models.Model):",
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "Video",
+        "kind": 6,
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "peekOfCode": "class Video(models.Model):\n    class AccessType(models.TextChoices):\n        FREE = \"free\", \"Free\"\n        PAID = \"paid\", \"Paid\"\n    title = models.CharField(max_length=200)\n    description = models.TextField()\n    category = models.ForeignKey(\n        Category,\n        on_delete=models.PROTECT,\n        related_name=\"videos\",",
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "videos.urls",
+        "description": "videos.urls",
+        "peekOfCode": "app_name = \"videos\"\nurlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n]",
+        "detail": "videos.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "videos.urls",
+        "description": "videos.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n]",
+        "detail": "videos.urls",
+        "documentation": {}
+    },
+    {
+        "label": "is_main_admin",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def is_main_admin(user):\n    return (\n        user.is_authenticated\n        and user.is_active\n        and user.is_superuser\n    )\n@user_passes_test(is_main_admin, login_url=\"/admin/login/\")\ndef admin_dashboard(request):\n    context = {\n        \"total_videos\": Video.objects.count(),",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "admin_dashboard",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def admin_dashboard(request):\n    context = {\n        \"total_videos\": Video.objects.count(),\n        \"published_videos\": Video.objects.filter(\n            is_published=True\n        ).count(),\n        \"draft_videos\": Video.objects.filter(\n            is_published=False\n        ).count(),\n        \"total_categories\": Category.objects.count(),",
+        "detail": "videos.views",
         "documentation": {}
     },
     {
