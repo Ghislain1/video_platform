@@ -1,0 +1,319 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Ajouter une vidéo | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/add_video.css' %}">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+
+        <a href="{% url 'videos:admin_dashboard' %}"
+           class="brand">
+            <span class="brand-icon">▶</span>
+            <span>Video<span class="brand-accent">Hub</span></span>
+        </a>
+
+        <p class="sidebar-label">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="{% url 'videos:admin_dashboard' %}"
+               class="nav-link">
+                ▦ Tableau de bord
+            </a>
+
+            <a href="{% url 'videos:add_video' %}"
+               class="nav-link active">
+                ＋ Ajouter une vidéo
+            </a>
+
+            <a href="/admin/videos/video/"
+               class="nav-link">
+                ▶ Gérer les vidéos
+            </a>
+
+            <a href="/admin/videos/category/"
+               class="nav-link">
+                ▤ Catégories
+            </a>
+
+            <a href="/admin/"
+               class="nav-link">
+                ⚙ Administration Django
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <strong>Main Admin</strong>
+            <small>Gestion de la plateforme</small>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">GESTION DU CONTENU</p>
+                <h1>Ajouter une vidéo</h1>
+                <p class="subtitle">
+                    Ajoute une vidéo à ton catalogue.
+                </p>
+            </div>
+
+            <a href="{% url 'videos:admin_dashboard' %}"
+               class="back-button">
+                ← Retour au tableau de bord
+            </a>
+
+        </header>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            <div class="message error">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <form method="post"
+              enctype="multipart/form-data"
+              class="video-form">
+
+            {% csrf_token %}
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+
+                    <div>
+                        <h2>Informations générales</h2>
+                        <p>
+                            Présente ta vidéo aux utilisateurs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">
+                        Titre de la vidéo
+                    </label>
+
+                    {{ form.title }}
+
+                    {{ form.title.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">
+                        Description
+                    </label>
+
+                    {{ form.description }}
+
+                    {{ form.description.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">
+                        Catégorie
+                    </label>
+
+                    {{ form.category }}
+
+                    {{ form.category.errors }}
+
+                    <small>
+                        Crée d'abord une catégorie si la liste est vide.
+                    </small>
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+
+                    <div>
+                        <h2>Fichiers multimédias</h2>
+                        <p>
+                            Téléverse la vidéo et sa miniature.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.video_file.id_for_label }}">
+                        Fichier vidéo
+                    </label>
+
+                    {{ form.video_file }}
+
+                    {{ form.video_file.errors }}
+
+                    <small>
+                        Sélectionne le fichier vidéo à héberger.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.thumbnail.id_for_label }}">
+                        Miniature
+                    </label>
+
+                    {{ form.thumbnail }}
+
+                    {{ form.thumbnail.errors }}
+
+                    <small>
+                        Cette image représentera la vidéo dans le catalogue.
+                    </small>
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+
+                    <div>
+                        <h2>Accès et tarification</h2>
+                        <p>
+                            Détermine les conditions d'accès à la vidéo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.access_type.id_for_label }}">
+                        Type d'accès
+                    </label>
+
+                    {{ form.access_type }}
+
+                    {{ form.access_type.errors }}
+                </div>
+
+                <div class="form-group" id="price-group">
+                    <label for="{{ form.price.id_for_label }}">
+                        Prix
+                    </label>
+
+                    <div class="price-input">
+                        {{ form.price }}
+                        <span>CAD</span>
+                    </div>
+
+                    {{ form.price.errors }}
+
+                    <small>
+                        Les vidéos gratuites auront un prix de 0.
+                    </small>
+                </div>
+
+            </section>
+
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">04</span>
+
+                    <div>
+                        <h2>Publication</h2>
+                        <p>
+                            Choisis si la vidéo doit être publiée.
+                        </p>
+                    </div>
+                </div>
+
+                <label class="checkbox-row"
+                       for="{{ form.is_published.id_for_label }}">
+
+                    {{ form.is_published }}
+
+                    <span>
+                        <strong>Publier immédiatement</strong>
+                        <small>
+                            Décoche cette option pour conserver un brouillon.
+                        </small>
+                    </span>
+
+                </label>
+
+                {{ form.is_published.errors }}
+
+            </section>
+
+            <div class="form-actions">
+
+                <a href="{% url 'videos:admin_dashboard' %}"
+                   class="cancel-button">
+                    Annuler
+                </a>
+
+                <button type="submit"
+                        class="submit-button">
+                    Enregistrer la vidéo
+                </button>
+
+            </div>
+
+        </form>
+
+        <footer class="footer">
+            VideoHub · Main Admin
+        </footer>
+
+    </main>
+
+</div>
+
+<script>
+    const accessType = document.getElementById(
+        "{{ form.access_type.id_for_label }}"
+    );
+
+    const priceGroup = document.getElementById("price-group");
+    const priceInput = document.getElementById(
+        "{{ form.price.id_for_label }}"
+    );
+
+    function updatePriceField() {
+        const isFree = accessType.value === "free";
+
+        priceGroup.style.display = isFree ? "none" : "block";
+
+        if (isFree) {
+            priceInput.value = "0.00";
+        }
+    }
+
+    accessType.addEventListener("change", updatePriceField);
+
+    updatePriceField();
+</script>
+
+</body>
+</html>
