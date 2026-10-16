@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Video | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/add_video.css' %}">
+</head>
+
+<body>
+<main class="main-content">
+
+    <h1>Edit Video</h1>
+    <p>Update the information for "{{ video.title }}".</p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message {{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post"
+          enctype="multipart/form-data"
+          class="video-form">
+
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-section">
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+
+                    {% if field.help_text %}
+                        <small>{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+
+        <div class="form-actions">
+            <a href="{% url 'videos:manage_videos' %}"
+               class="cancel-button">
+                Cancel
+            </a>
+
+            <button type="submit" class="submit-button">
+                Save Changes
+            </button>
+        </div>
+
+    </form>
+
+</main>
+</body>
+</html>

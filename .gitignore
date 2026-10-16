@@ -18,3 +18,5 @@ db.sqlite3
 .idea/
 
 project documentation.md
+*.mp4
+*.mp3

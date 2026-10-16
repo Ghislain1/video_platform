@@ -3,9 +3,18 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
+
+from .forms import VideoForm
+from .models import Video
+
 from videos.forms import VideoForm
 
 from .models import Category, Video
+
+
 
 
 def is_main_admin(user):
@@ -67,3 +76,102 @@ def add_video(request):
         "admin_dashboard/add_video.html",
         {"form": form},
     )
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+def manage_videos(request):
+    videos = Video.objects.select_related("category").all()
+
+    search_query = request.GET.get("q", "").strip()
+    category_id = request.GET.get("category", "")
+    status = request.GET.get("status", "")
+    access_type = request.GET.get("access_type", "")
+
+    if search_query:
+        videos = videos.filter(
+            Q(title__icontains=search_query)
+            | Q(description__icontains=search_query)
+        )
+
+    if category_id.isdigit():
+        videos = videos.filter(category_id=int(category_id))
+
+    if status in ["published", "draft"]:
+        videos = videos.filter(
+            is_published=(status == "published")
+        )
+
+    if access_type in ["free", "paid"]:
+        videos = videos.filter(access_type=access_type)
+
+    context = {
+        "videos": videos,
+        "categories": Category.objects.all(),
+        "search_query": search_query,
+        "selected_category": category_id,
+        "selected_status": status,
+        "selected_access_type": access_type,
+    }
+
+    return render(
+        request,
+        "admin_dashboard/manage_videos.html",
+        context,
+    )
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+def edit_video(request, video_id):
+    video = get_object_or_404(Video, pk=video_id)
+
+    if request.method == "POST":
+        form = VideoForm(
+            request.POST,
+            request.FILES,
+            instance=video,
+        )
+
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                "Video updated successfully.",
+            )
+            return redirect("videos:manage_videos")
+    else:
+        form = VideoForm(instance=video)
+
+    return render(
+        request,
+        "admin_dashboard/edit_video.html",
+        {"form": form, "video": video},
+    )
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+@require_POST
+def toggle_video_publication(request, video_id):
+    video = get_object_or_404(Video, pk=video_id)
+
+    video.is_published = not video.is_published
+    video.save(update_fields=["is_published", "updated_at"])
+
+    messages.success(
+        request,
+        "Video publication status updated.",
+    )
+
+    return redirect("videos:manage_videos")
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+@require_POST
+def delete_video(request, video_id):
+    video = get_object_or_404(Video, pk=video_id)
+    video.delete()
+
+    messages.success(
+        request,
+        "Video deleted successfully.",
+    )
+
+    return redirect("videos:manage_videos")

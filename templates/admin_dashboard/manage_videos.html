@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Videos | VideoHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/manage_videos.css' %}">
+</head>
+<body>
+
+<main class="container">
+
+    <header class="page-header">
+        <div>
+            <h1>Manage Videos</h1>
+            <p>Search, edit, publish, and organize your videos.</p>
+        </div>
+
+        <a href="{% url 'videos:add_video' %}" class="button primary">
+            + Add Video
+        </a>
+    </header>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="get" class="filters">
+
+        <input
+            type="search"
+            name="q"
+            placeholder="Search by title or description"
+            value="{{ search_query }}"
+        >
+
+        <select name="category">
+            <option value="">All categories</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}"
+                    {% if selected_category == category.id|stringformat:"s" %}
+                        selected
+                    {% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <select name="status">
+            <option value="">All statuses</option>
+            <option value="published"
+                {% if selected_status == "published" %}selected{% endif %}>
+                Published
+            </option>
+            <option value="draft"
+                {% if selected_status == "draft" %}selected{% endif %}>
+                Draft
+            </option>
+        </select>
+
+        <select name="access_type">
+            <option value="">All access types</option>
+            <option value="free"
+                {% if selected_access_type == "free" %}selected{% endif %}>
+                Free
+            </option>
+            <option value="paid"
+                {% if selected_access_type == "paid" %}selected{% endif %}>
+                Paid
+            </option>
+        </select>
+
+        <button type="submit" class="button primary">Filter</button>
+
+        <a href="{% url 'videos:manage_videos' %}"
+           class="button secondary">
+            Reset
+        </a>
+    </form>
+
+    <section class="table-card">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Video</th>
+                        <th>Category</th>
+                        <th>Access</th>
+                        <th>Price (CAD)</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for video in videos %}
+                    <tr>
+                        <td>
+                            <div class="video-info">
+                                {% if video.thumbnail %}
+                                    <img
+                                        src="{{ video.thumbnail.url }}"
+                                        alt=""
+                                        class="thumbnail"
+                                    >
+                                {% else %}
+                                    <div class="thumbnail placeholder">▶</div>
+                                {% endif %}
+
+                                <strong>{{ video.title }}</strong>
+                            </div>
+                        </td>
+
+                        <td>{{ video.category.name }}</td>
+
+                        <td>{{ video.get_access_type_display }}</td>
+
+                        <td>
+                            {% if video.access_type == "free" %}
+                                Free
+                            {% else %}
+                                ${{ video.price }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if video.is_published %}
+                                <span class="badge published">Published</span>
+                            {% else %}
+                                <span class="badge draft">Draft</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <div class="actions">
+
+                                <a href="{% url 'videos:edit_video' video.id %}"
+                                   class="button small secondary">
+                                    Edit
+                                </a>
+
+                                <form method="post"
+                                      action="{% url 'videos:toggle_video_publication' video.id %}">
+                                    {% csrf_token %}
+
+                                    <button type="submit"
+                                            class="button small secondary">
+                                        {% if video.is_published %}
+                                            Unpublish
+                                        {% else %}
+                                            Publish
+                                        {% endif %}
+                                    </button>
+                                </form>
+
+                                <form method="post"
+                                      action="{% url 'videos:delete_video' video.id %}"
+                                      onsubmit="return confirm('Delete this video permanently?');">
+                                    {% csrf_token %}
+
+                                    <button type="submit"
+                                            class="button small danger">
+                                        Delete
+                                    </button>
+                                </form>
+
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            No videos found. Add a video or change your filters.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <a href="{% url 'videos:admin_dashboard' %}" class="back-link">
+        ← Back to dashboard
+    </a>
+
+</main>
+
+</body>
+</html>

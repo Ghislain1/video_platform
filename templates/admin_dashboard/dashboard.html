@@ -30,11 +30,11 @@
                 <span>▦</span> Tableau de bord
             </a>
 
-            <a href="/admin/videos/video/" class="nav-link">
-                <span>▶</span> Mes vidéos
+            <a href="{% url 'videos:manage_videos' %}" class="nav-link">
+                <span>▶</span> Manage Videos
             </a>
 
-            <a href="/admin/videos/category/" class="nav-link">
+            <a href="{% url 'videos:manage_categories' %}" class="nav-link">
                 <span>▤</span> Catégories
             </a>
 
@@ -113,9 +113,8 @@
                     <p>Les cinq dernières vidéos ajoutées.</p>
                 </div>
 
-                <a href="/admin/videos/video/"
-                   class="text-link">
-                    Voir toutes les vidéos →
+                <a href="{% url 'videos:manage_videos' %}" class="text-link">
+                    View all videos →
                 </a>
             </div>
 

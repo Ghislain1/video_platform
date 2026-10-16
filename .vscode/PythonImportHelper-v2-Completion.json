@@ -210,6 +210,30 @@
         "documentation": {}
     },
     {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "Q",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "require_POST",
+        "importPath": "django.views.decorators.http",
+        "description": "django.views.decorators.http",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.http",
+        "documentation": {}
+    },
+    {
         "label": "VideoForm",
         "importPath": "videos.forms",
         "description": "videos.forms",
@@ -474,7 +498,7 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "app_name = \"videos\"\nurlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n]",
+        "peekOfCode": "app_name = \"videos\"\nurlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n]",
         "detail": "videos.urls",
         "documentation": {}
     },
@@ -483,7 +507,7 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n]",
         "detail": "videos.urls",
         "documentation": {}
     },
@@ -511,6 +535,42 @@
         "importPath": "videos.views",
         "description": "videos.views",
         "peekOfCode": "def add_video(request):\n    if request.method == \"POST\":\n        form = VideoForm(\n            request.POST,\n            request.FILES,\n        )\n        if form.is_valid():\n            video = form.save()\n            messages.success(\n                request,",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_videos",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def manage_videos(request):\n    videos = Video.objects.select_related(\"category\").all()\n    search_query = request.GET.get(\"q\", \"\").strip()\n    category_id = request.GET.get(\"category\", \"\")\n    status = request.GET.get(\"status\", \"\")\n    access_type = request.GET.get(\"access_type\", \"\")\n    if search_query:\n        videos = videos.filter(\n            Q(title__icontains=search_query)\n            | Q(description__icontains=search_query)",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "edit_video",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def edit_video(request, video_id):\n    video = get_object_or_404(Video, pk=video_id)\n    if request.method == \"POST\":\n        form = VideoForm(\n            request.POST,\n            request.FILES,\n            instance=video,\n        )\n        if form.is_valid():\n            form.save()",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "toggle_video_publication",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def toggle_video_publication(request, video_id):\n    video = get_object_or_404(Video, pk=video_id)\n    video.is_published = not video.is_published\n    video.save(update_fields=[\"is_published\", \"updated_at\"])\n    messages.success(\n        request,\n        \"Video publication status updated.\",\n    )\n    return redirect(\"videos:manage_videos\")\n@user_passes_test(is_main_admin, login_url=\"/admin/login/\")",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_video",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def delete_video(request, video_id):\n    video = get_object_or_404(Video, pk=video_id)\n    video.delete()\n    messages.success(\n        request,\n        \"Video deleted successfully.\",\n    )\n    return redirect(\"videos:manage_videos\")",
         "detail": "videos.views",
         "documentation": {}
     },
