@@ -476,6 +476,15 @@
         "documentation": {}
     },
     {
+        "label": "CategoryForm",
+        "kind": 6,
+        "importPath": "videos.forms",
+        "description": "videos.forms",
+        "peekOfCode": "class CategoryForm(forms.ModelForm):\n    class Meta:\n        model = Category\n        fields = [\"name\", \"description\"]\n        widgets = {\n            \"name\": forms.TextInput(attrs={\n                \"class\": \"form-control\",\n                \"placeholder\": \"Ex. : Python Programming\"\n            }),\n            \"description\": forms.Textarea(attrs={",
+        "detail": "videos.forms",
+        "documentation": {}
+    },
+    {
         "label": "Category",
         "kind": 6,
         "importPath": "videos.models",
@@ -498,7 +507,7 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "app_name = \"videos\"\nurlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n]",
+        "peekOfCode": "app_name = \"videos\"\nurlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n    path(\"main-admin/categories/\", views.manage_categories, name=\"manage_categories\",),\n    path(\"main-admin/categories/add/\", views.add_category, name=\"add_category\",),",
         "detail": "videos.urls",
         "documentation": {}
     },
@@ -507,7 +516,7 @@
         "kind": 5,
         "importPath": "videos.urls",
         "description": "videos.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"main-admin/\", views.admin_dashboard, name=\"admin_dashboard\"),\n    path(\"main-admin/videos/add/\", views.add_video, name=\"add_video\"),\n    path(\"main-admin/videos/\", views.manage_videos, name=\"manage_videos\",),\n    path(\"main-admin/videos/<int:video_id>/edit/\", views.edit_video, name=\"edit_video\",),\n    path(\"main-admin/videos/<int:video_id>/toggle-publication/\", views.toggle_video_publication, name=\"toggle_video_publication\",),\n    path(\"main-admin/videos/<int:video_id>/delete/\", views.delete_video, name=\"delete_video\",),\n    path(\"main-admin/categories/\", views.manage_categories, name=\"manage_categories\",),\n    path(\"main-admin/categories/add/\", views.add_category, name=\"add_category\",),\n    path(\"main-admin/categories/<int:category_id>/edit/\", views.edit_category, name=\"edit_category\",),",
         "detail": "videos.urls",
         "documentation": {}
     },
@@ -570,7 +579,43 @@
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def delete_video(request, video_id):\n    video = get_object_or_404(Video, pk=video_id)\n    video.delete()\n    messages.success(\n        request,\n        \"Video deleted successfully.\",\n    )\n    return redirect(\"videos:manage_videos\")",
+        "peekOfCode": "def delete_video(request, video_id):\n    video = get_object_or_404(Video, pk=video_id)\n    video.delete()\n    messages.success(\n        request,\n        \"Video deleted successfully.\",\n    )\n    return redirect(\"videos:manage_videos\")\n@user_passes_test(is_main_admin, login_url=\"/admin/login/\")\ndef manage_categories(request):",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_categories",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def manage_categories(request):\n    categories = Category.objects.all()\n    return render(\n        request,\n        \"admin_dashboard/manage_categories.html\",\n        {\"categories\": categories}\n    )\n@user_passes_test(is_main_admin, login_url=\"/admin/login/\")\ndef add_category(request):\n    if request.method == \"POST\":",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "add_category",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def add_category(request):\n    if request.method == \"POST\":\n        form = CategoryForm(request.POST)\n        if form.is_valid():\n            form.save()\n            messages.success(request, \"Category added successfully.\")\n            return redirect(\"videos:manage_categories\")\n    else:\n        form = CategoryForm()\n    return render(",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "edit_category",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def edit_category(request, category_id):\n    category = get_object_or_404(Category, pk=category_id)\n    if request.method == \"POST\":\n        form = CategoryForm(request.POST, instance=category)\n        if form.is_valid():\n            form.save()\n            messages.success(request, \"Category updated successfully.\")\n            return redirect(\"videos:manage_categories\")\n    else:\n        form = CategoryForm(instance=category)",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_category",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def delete_category(request, category_id):\n    category = get_object_or_404(Category, pk=category_id)\n    if category.videos.exists():\n        messages.error(\n            request,\n            \"This category cannot be deleted because it contains videos.\"\n        )\n    else:\n        category.delete()\n        messages.success(request, \"Category deleted successfully.\")",
         "detail": "videos.views",
         "documentation": {}
     },

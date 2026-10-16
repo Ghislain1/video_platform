@@ -11,4 +11,8 @@ urlpatterns = [
     path("main-admin/videos/<int:video_id>/edit/", views.edit_video, name="edit_video",),
     path("main-admin/videos/<int:video_id>/toggle-publication/", views.toggle_video_publication, name="toggle_video_publication",),
     path("main-admin/videos/<int:video_id>/delete/", views.delete_video, name="delete_video",),
+    path("main-admin/categories/", views.manage_categories, name="manage_categories",),
+    path("main-admin/categories/add/", views.add_category, name="add_category",),
+    path("main-admin/categories/<int:category_id>/edit/", views.edit_category, name="edit_category",),
+    path("main-admin/categories/<int:category_id>/delete/", views.delete_category, name="delete_category",),
 ]

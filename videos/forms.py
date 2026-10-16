@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Video
+from .models import Category, Video
 
 
 class VideoForm(forms.ModelForm):
@@ -78,3 +78,19 @@ class VideoForm(forms.ModelForm):
                 )
 
         return cleaned_data
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ["name", "description"]
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Ex. : Python Programming"
+            }),
+            "description": forms.Textarea(attrs={
+                "class": "form-control",
+                "placeholder": "Describe this category...",
+                "rows": 4
+            }),
+        }

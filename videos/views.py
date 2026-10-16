@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
-from .forms import VideoForm
+from .forms import CategoryForm, VideoForm
 from .models import Video
 
 from videos.forms import VideoForm
@@ -175,3 +175,70 @@ def delete_video(request, video_id):
     )
 
     return redirect("videos:manage_videos")
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+def manage_categories(request):
+    categories = Category.objects.all()
+
+    return render(
+        request,
+        "admin_dashboard/manage_categories.html",
+        {"categories": categories}
+    )
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+def add_category(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category added successfully.")
+            return redirect("videos:manage_categories")
+    else:
+        form = CategoryForm()
+
+    return render(
+        request,
+        "admin_dashboard/category_form.html",
+        {"form": form, "page_title": "Add Category"}
+    )
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=category)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category updated successfully.")
+            return redirect("videos:manage_categories")
+    else:
+        form = CategoryForm(instance=category)
+
+    return render(
+        request,
+        "admin_dashboard/category_form.html",
+        {"form": form, "page_title": "Edit Category"}
+    )
+
+
+@user_passes_test(is_main_admin, login_url="/admin/login/")
+@require_POST
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+
+    if category.videos.exists():
+        messages.error(
+            request,
+            "This category cannot be deleted because it contains videos."
+        )
+    else:
+        category.delete()
+        messages.success(request, "Category deleted successfully.")
+
+    return redirect("videos:manage_categories")
