@@ -327,3 +327,47 @@ a {
         width: 100%;
     }
 }
+
+.site-header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.site-header nav a {
+    color: white;
+}
+
+.site-header nav a:hover {
+    color: #93c5fd;
+}
+
+.nav-logout-form {
+    margin: 0;
+}
+
+.nav-logout {
+    padding: 9px 13px;
+    border: 1px solid #6b7280;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-logout:hover {
+    background: #374151;
+}
+
+.site-header nav .register-link {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #2563eb;
+    color: white;
+}
+
+.site-header nav .register-link:hover {
+    background: #1d4ed8;
+}

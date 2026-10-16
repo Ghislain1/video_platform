@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.http import url_has_allowed_host_and_scheme
 
+from django.http import FileResponse, Http404
+from .models import Video, VideoAccessGrant
+
 from .forms import RegistrationForm
 
 from django.db.models import Q
@@ -384,3 +387,35 @@ def logout_view(request):
     messages.success(request, "You have been logged out successfully.")
 
     return redirect("videos:public_library")
+
+@login_required(login_url="videos:login")
+def stream_video(request, video_id):
+    video = get_object_or_404(
+        Video,
+        pk=video_id,
+        is_published=True
+    )
+
+    # Free videos are available to all registered users.
+    # Paid videos require an explicit access grant.
+    has_access = (
+        video.access_type == Video.AccessType.FREE
+        or request.user.is_superuser
+        or VideoAccessGrant.objects.filter(
+            user=request.user,
+            video=video
+        ).exists()
+    )
+
+    if not has_access:
+        raise Http404("Video not found.")
+
+    try:
+        video_file = video.video_file.open("rb")
+    except (FileNotFoundError, OSError, ValueError):
+        raise Http404("Video file not found.")
+
+    return FileResponse(
+        video_file,
+        content_type="application/octet-stream"
+    )

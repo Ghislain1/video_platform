@@ -22,9 +22,28 @@
     <nav>
         <a href="{% url 'videos:public_library' %}">Home</a>
         <a href="{% url 'videos:public_library' %}">Videos</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'videos:account' %}">My Account</a>
+
+            <form method="post"
+                  action="{% url 'videos:logout' %}"
+                  class="nav-logout-form">
+                {% csrf_token %}
+                <button type="submit" class="nav-logout">
+                    Logout
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'videos:login' %}">Login</a>
+
+            <a href="{% url 'videos:register' %}"
+               class="register-link">
+                Register
+            </a>
+        {% endif %}
     </nav>
 </header>
-
 <main class="container">
 
     <section class="hero">

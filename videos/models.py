@@ -2,7 +2,9 @@
 from decimal import Decimal
 
 from django.core.exceptions import ValidationError
+from .storage import private_video_storage
 from django.db import models
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -29,7 +31,10 @@ class Video(models.Model):
         related_name="videos",
     )
 
-    video_file = models.FileField(upload_to="videos/")
+    video_file = models.FileField(
+    upload_to="videos/",
+    storage=private_video_storage
+)
     thumbnail = models.ImageField(
         upload_to="thumbnails/",
         blank=True,
@@ -79,3 +84,39 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+class VideoAccessGrant(models.Model):
+    class GrantSource(models.TextChoices):
+        MANUAL = "manual", "Manual"
+        PAYMENT = "payment", "Payment"
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="video_access_grants"
+    )
+
+    video = models.ForeignKey(
+        Video,
+        on_delete=models.CASCADE,
+        related_name="access_grants"
+    )
+
+    source = models.CharField(
+        max_length=10,
+        choices=GrantSource.choices,
+        default=GrantSource.MANUAL
+    )
+
+    granted_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "video"],
+                name="unique_user_video_access"
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.user.username} - {self.video.title}"

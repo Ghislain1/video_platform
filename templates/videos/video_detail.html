@@ -37,8 +37,8 @@
             {% if video.access_type == "free" %}
 
                 <video controls preload="metadata"
-                       poster="{% if video.thumbnail %}{{ video.thumbnail.url }}{% endif %}">
-                    <source src="{{ video.video_file.url }}">
+                    poster="{% if video.thumbnail %}{{ video.thumbnail.url }}{% endif %}">
+                    <source src="{% url 'videos:stream_video' video.id %}" type="video/mp4">
                     Your browser does not support HTML video.
                 </video>
 

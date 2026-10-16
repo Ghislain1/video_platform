@@ -23,4 +23,7 @@ urlpatterns = [
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("account/", views.account_view, name="account"),
+
+    path("video/<int:video_id>/stream/", views.stream_video, name="stream_video"),
+    path("video/<int:video_id>/", views.public_video_detail, name="video_detail"),
 ]

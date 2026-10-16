@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from videos.models import Category, Video
-
+from .models import VideoAccessGrant
 # Register your models here.
 
 
@@ -22,3 +22,10 @@ class VideoAdmin(admin.ModelAdmin):
         ("Access and pricing", { "fields": ("access_type", "price")}),
         ("Publication", { "fields": ("is_published", "created_at", "updated_at")}),
     )
+
+@admin.register(VideoAccessGrant)
+class VideoAccessGrantAdmin(admin.ModelAdmin):
+    list_display = ("user", "video", "source", "granted_at")
+    list_filter = ("source", "granted_at")
+    search_fields = ("user__username", "video__title")
+    autocomplete_fields = ("user", "video")

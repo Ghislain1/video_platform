@@ -17,6 +17,15 @@
         "documentation": {}
     },
     {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "Path",
         "importPath": "pathlib",
         "description": "pathlib",
@@ -130,11 +139,68 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.core.files.storage",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.core.files.storage",
+        "description": "django.core.files.storage",
+        "detail": "django.core.files.storage",
+        "documentation": {}
+    },
+    {
+        "label": "FileSystemStorage",
+        "importPath": "django.core.files.storage",
+        "description": "django.core.files.storage",
+        "isExtraImport": true,
+        "detail": "django.core.files.storage",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -271,6 +337,22 @@
         "description": "django.utils.http",
         "isExtraImport": true,
         "detail": "django.utils.http",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "Http404",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -496,6 +578,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "videos.migrations.0002_alter_video_video_file_videoaccessgrant",
+        "description": "videos.migrations.0002_alter_video_video_file_videoaccessgrant",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('videos', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='video',\n            name='video_file',\n            field=models.FileField(storage=django.core.files.storage.FileSystemStorage(base_url='/private-video-files/', location=pathlib.PureWindowsPath('C:/Users/Administrator/video_platform/private_media')), upload_to='videos/'),",
+        "detail": "videos.migrations.0002_alter_video_video_file_videoaccessgrant",
+        "documentation": {}
+    },
+    {
         "label": "CategoryAdmin",
         "kind": 6,
         "importPath": "videos.admin",
@@ -510,6 +601,15 @@
         "importPath": "videos.admin",
         "description": "videos.admin",
         "peekOfCode": "class VideoAdmin(admin.ModelAdmin):\n    list_display = (\"title\", \"category\", \"access_type\", \"price\", \"is_published\", \"created_at\")\n    list_filter = (\"category\", \"access_type\", \"is_published\")\n    search_fields = (\"title\", \"description\")\n    readonly_fields = (\"created_at\", \"updated_at\")\n    fieldsets = (\n        (\"Video Information\", { \"fields\": (\"title\", \"description\", \"category\", \"video_file\", \"thumbnail\")}),\n        (\"Access and pricing\", { \"fields\": (\"access_type\", \"price\")}),\n        (\"Publication\", { \"fields\": (\"is_published\", \"created_at\", \"updated_at\")}),\n    )",
+        "detail": "videos.admin",
+        "documentation": {}
+    },
+    {
+        "label": "VideoAccessGrantAdmin",
+        "kind": 6,
+        "importPath": "videos.admin",
+        "description": "videos.admin",
+        "peekOfCode": "class VideoAccessGrantAdmin(admin.ModelAdmin):\n    list_display = (\"user\", \"video\", \"source\", \"granted_at\")\n    list_filter = (\"source\", \"granted_at\")\n    search_fields = (\"user__username\", \"video__title\")\n    autocomplete_fields = (\"user\", \"video\")",
         "detail": "videos.admin",
         "documentation": {}
     },
@@ -565,6 +665,24 @@
         "description": "videos.models",
         "peekOfCode": "class Video(models.Model):\n    class AccessType(models.TextChoices):\n        FREE = \"free\", \"Free\"\n        PAID = \"paid\", \"Paid\"\n    title = models.CharField(max_length=200)\n    description = models.TextField()\n    category = models.ForeignKey(\n        Category,\n        on_delete=models.PROTECT,\n        related_name=\"videos\",",
         "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "VideoAccessGrant",
+        "kind": 6,
+        "importPath": "videos.models",
+        "description": "videos.models",
+        "peekOfCode": "class VideoAccessGrant(models.Model):\n    class GrantSource(models.TextChoices):\n        MANUAL = \"manual\", \"Manual\"\n        PAYMENT = \"payment\", \"Payment\"\n    user = models.ForeignKey(\n        settings.AUTH_USER_MODEL,\n        on_delete=models.CASCADE,\n        related_name=\"video_access_grants\"\n    )\n    video = models.ForeignKey(",
+        "detail": "videos.models",
+        "documentation": {}
+    },
+    {
+        "label": "private_video_storage",
+        "kind": 5,
+        "importPath": "videos.storage",
+        "description": "videos.storage",
+        "peekOfCode": "private_video_storage = FileSystemStorage(\n    location=settings.BASE_DIR / \"private_media\",\n    base_url=\"/private-video-files/\"\n)",
+        "detail": "videos.storage",
         "documentation": {}
     },
     {
@@ -734,7 +852,16 @@
         "kind": 2,
         "importPath": "videos.views",
         "description": "videos.views",
-        "peekOfCode": "def logout_view(request):\n    logout(request)\n    messages.success(request, \"You have been logged out successfully.\")\n    return redirect(\"videos:public_library\")",
+        "peekOfCode": "def logout_view(request):\n    logout(request)\n    messages.success(request, \"You have been logged out successfully.\")\n    return redirect(\"videos:public_library\")\n@login_required(login_url=\"videos:login\")\ndef stream_video(request, video_id):\n    video = get_object_or_404(\n        Video,\n        pk=video_id,\n        is_published=True",
+        "detail": "videos.views",
+        "documentation": {}
+    },
+    {
+        "label": "stream_video",
+        "kind": 2,
+        "importPath": "videos.views",
+        "description": "videos.views",
+        "peekOfCode": "def stream_video(request, video_id):\n    video = get_object_or_404(\n        Video,\n        pk=video_id,\n        is_published=True\n    )\n    # Free videos are available to all registered users.\n    # Paid videos require an explicit access grant.\n    has_access = (\n        video.access_type == Video.AccessType.FREE",
         "detail": "videos.views",
         "documentation": {}
     },
