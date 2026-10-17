@@ -21,3 +21,5 @@ project documentation.md
 *.mp4
 *.mp3
 .env
+
+staticfiles/

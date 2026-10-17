@@ -34,6 +34,15 @@
         "documentation": {}
     },
     {
+        "label": "dj_database_url",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dj_database_url",
+        "description": "dj_database_url",
+        "detail": "dj_database_url",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
@@ -532,7 +541,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nload_dotenv(BASE_DIR / \".env\")\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-*f)&$ah26xi9(cbf=1(#xve(-*6s8igd#!3$us076ti&2b1=f#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\nload_dotenv(BASE_DIR / \".env\")\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\n# SECRET_KEY = 'django-insecure-*f)&$ah26xi9(cbf=1(#xve(-*6s8igd#!3$us076ti&2b1=f#'\nSECRET_KEY = os.environ.get(\"DJANGO_SECRET_KEY\", \"django-insecure-local-development-only\")\nDEBUG = os.environ.get(\"DEBUG\", \"False\").lower() == \"true\"\n# SECURITY WARNING: don't run with debug turned on in production!\n# DEBUG = True",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -541,7 +550,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-*f)&$ah26xi9(cbf=1(#xve(-*6s8igd#!3$us076ti&2b1=f#'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "SECRET_KEY = os.environ.get(\"DJANGO_SECRET_KEY\", \"django-insecure-local-development-only\")\nDEBUG = os.environ.get(\"DEBUG\", \"False\").lower() == \"true\"\n# SECURITY WARNING: don't run with debug turned on in production!\n# DEBUG = True\n# ALLOWED_HOSTS = []\nALLOWED_HOSTS = [\n    host.strip()\n    for host in os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1,localhost\").split(\",\")\n    if host.strip()\n]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -550,7 +559,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "DEBUG = os.environ.get(\"DEBUG\", \"False\").lower() == \"true\"\n# SECURITY WARNING: don't run with debug turned on in production!\n# DEBUG = True\n# ALLOWED_HOSTS = []\nALLOWED_HOSTS = [\n    host.strip()\n    for host in os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1,localhost\").split(\",\")\n    if host.strip()\n]\n# Application definition",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -559,7 +568,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'videos',",
+        "peekOfCode": "ALLOWED_HOSTS = [\n    host.strip()\n    for host in os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1,localhost\").split(\",\")\n    if host.strip()\n]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -577,7 +586,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\nROOT_URLCONF = 'config.urls'",
+        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'whitenoise.middleware.WhiteNoiseMiddleware',",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -604,7 +613,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'config.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/6.0/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "peekOfCode": "WSGI_APPLICATION = 'config.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/6.0/ref/settings/#databases\n# DATABASES = {\n#     'default': {\n#         'ENGINE': 'django.db.backends.sqlite3',\n#         'NAME': BASE_DIR / 'db.sqlite3',\n#     }\n# }\nDATABASES = {",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -613,7 +622,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "peekOfCode": "DATABASES = {\n    \"default\": dj_database_url.config(\n        default=f\"sqlite:///{BASE_DIR / 'db.sqlite3'}\",\n        conn_max_age=600,\n    )\n}\n# Password validation\n# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -631,7 +640,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\n# STATIC_URL = 'static/'\n# STATICFILES_DIRS = [\n#    BASE_DIR / 'static',\n# ]",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -640,7 +649,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\n# STATIC_URL = 'static/'\n# STATICFILES_DIRS = [\n#    BASE_DIR / 'static',\n# ]\nSTATIC_URL = \"static/\"",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -649,7 +658,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\n# STATIC_URL = 'static/'\n# STATICFILES_DIRS = [\n#    BASE_DIR / 'static',\n# ]\nSTATIC_URL = \"static/\"\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -658,7 +667,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/6.0/howto/static-files/\n# STATIC_URL = 'static/'\n# STATICFILES_DIRS = [\n#    BASE_DIR / 'static',\n# ]\nSTATIC_URL = \"static/\"\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\nSTORAGES = {",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -667,16 +676,25 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\n)\nSTRIPE_CURRENCY = os.environ.get(",
+        "peekOfCode": "STATIC_URL = \"static/\"\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\nSTORAGES = {\n    \"default\": {\n        \"BACKEND\": \"django.core.files.storage.FileSystemStorage\",\n    },\n    \"staticfiles\": {\n        \"BACKEND\": \"whitenoise.storage.CompressedManifestStaticFilesStorage\",\n    },\n}",
         "detail": "config.settings",
         "documentation": {}
     },
     {
-        "label": "STATICFILES_DIRS",
+        "label": "STATIC_ROOT",
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / 'static',\n]\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\n)\nSTRIPE_CURRENCY = os.environ.get(\n    \"STRIPE_CURRENCY\",",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / \"staticfiles\"\nSTORAGES = {\n    \"default\": {\n        \"BACKEND\": \"django.core.files.storage.FileSystemStorage\",\n    },\n    \"staticfiles\": {\n        \"BACKEND\": \"whitenoise.storage.CompressedManifestStaticFilesStorage\",\n    },\n}\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"\")",
+        "detail": "config.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STORAGES",
+        "kind": 5,
+        "importPath": "config.settings",
+        "description": "config.settings",
+        "peekOfCode": "STORAGES = {\n    \"default\": {\n        \"BACKEND\": \"django.core.files.storage.FileSystemStorage\",\n    },\n    \"staticfiles\": {\n        \"BACKEND\": \"whitenoise.storage.CompressedManifestStaticFilesStorage\",\n    },\n}\nSTRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -685,7 +703,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "STRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\n)\nSTRIPE_CURRENCY = os.environ.get(\n    \"STRIPE_CURRENCY\",\n    \"cad\"\n).lower()",
+        "peekOfCode": "STRIPE_SECRET_KEY = os.environ.get(\"STRIPE_SECRET_KEY\", \"\")\nSTRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"\"\n)\nSTRIPE_CURRENCY = os.environ.get(\n    \"STRIPE_CURRENCY\",\n    \"cad\"\n).lower()",
         "detail": "config.settings",
         "documentation": {}
     },
@@ -694,7 +712,7 @@
         "kind": 5,
         "importPath": "config.settings",
         "description": "config.settings",
-        "peekOfCode": "STRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6\"\n)\nSTRIPE_CURRENCY = os.environ.get(\n    \"STRIPE_CURRENCY\",\n    \"cad\"\n).lower()",
+        "peekOfCode": "STRIPE_WEBHOOK_SECRET = os.environ.get(\n    \"STRIPE_WEBHOOK_SECRET\",\n    \"\"\n)\nSTRIPE_CURRENCY = os.environ.get(\n    \"STRIPE_CURRENCY\",\n    \"cad\"\n).lower()",
         "detail": "config.settings",
         "documentation": {}
     },
