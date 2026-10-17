@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+from dotenv import load_dotenv
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -121,3 +128,16 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "sk_test_51TFEZJF8rFsQep8RXH3xG6rGQhohD1UptjH9smQMQ2iS2AbPicLl3gSFrolKGt0qTvKnHPe7E0BY6T5KuG700hD700QzNY8IPQ")
+
+STRIPE_WEBHOOK_SECRET = os.environ.get(
+    "STRIPE_WEBHOOK_SECRET",
+    "pk_test_51TFEZJF8rFsQep8RWSazolaGzXXOQhCTrpfq3A8DBJvmVO7zZztYSeUkmgOqlwM5tCiBIDoHDlzMqCcmzdnr1Ch800IwY6Bil6"
+)
+
+STRIPE_CURRENCY = os.environ.get(
+    "STRIPE_CURRENCY",
+    "cad"
+).lower()

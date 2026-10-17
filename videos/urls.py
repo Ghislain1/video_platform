@@ -26,4 +26,9 @@ urlpatterns = [
 
     path("video/<int:video_id>/stream/", views.stream_video, name="stream_video"),
     path("video/<int:video_id>/", views.public_video_detail, name="video_detail"),
+
+
+    path("video/<int:video_id>/checkout/", views.create_checkout_session, name="create_checkout_session",),
+    path("purchase/success/", views.purchase_success, name="purchase_success",),
+    path("stripe/webhook/", views.stripe_webhook, name="stripe_webhook",),
 ]

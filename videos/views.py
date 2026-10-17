@@ -1,3 +1,7 @@
+from datetime import timezone
+from decimal import Decimal
+import logging
+
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import redirect, render
@@ -9,7 +13,20 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.utils.http import url_has_allowed_host_and_scheme
 
 from django.http import FileResponse, Http404
-from .models import Video, VideoAccessGrant
+import stripe
+
+from django.db import IntegrityError, transaction
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import (
+    Purchase,
+    VideoAccessGrant,
+    ProcessedStripeEvent,
+)
+
+from config import settings
+from .models import Purchase, Video, VideoAccessGrant
 
 from .forms import RegistrationForm
 
@@ -24,7 +41,7 @@ from videos.forms import VideoForm
 
 from .models import Category, Video
 
-
+logger = logging.getLogger(__name__)
 
 
 def is_main_admin(user):
@@ -418,4 +435,369 @@ def stream_video(request, video_id):
     return FileResponse(
         video_file,
         content_type="application/octet-stream"
+    )
+
+@login_required(login_url="videos:login")
+@require_POST
+def create_checkout_session(request, video_id):
+
+    if not settings.STRIPE_SECRET_KEY:
+        messages.error(
+            request,
+            "Payments are not configured yet."
+        )
+        return redirect(
+            "videos:video_detail",
+            video_id=video_id
+        )
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    video = get_object_or_404(
+        Video,
+        pk=video_id,
+        is_published=True,
+        access_type=Video.AccessType.PAID
+    )
+
+    # Prevent a user from purchasing the same video twice.
+    existing_grant = VideoAccessGrant.objects.filter(
+        user=request.user,
+        video=video
+    ).exists()
+
+    if existing_grant:
+        messages.info(
+            request,
+            "You already have access to this video."
+        )
+        return redirect(
+            "videos:video_detail",
+            video_id=video.id
+        )
+
+    currency = settings.STRIPE_CURRENCY
+
+    if currency != "cad":
+        messages.error(
+            request,
+            "This checkout workflow is currently configured for CAD."
+        )
+        return redirect(
+            "videos:video_detail",
+            video_id=video.id
+        )
+
+    # Convert the database price to integer cents.
+    amount_in_cents = int(
+        (video.price * Decimal("100")).quantize(
+            Decimal("1")
+        )
+    )
+
+    if amount_in_cents <= 0:
+        messages.error(
+            request,
+            "This video has an invalid price."
+        )
+        return redirect(
+            "videos:video_detail",
+            video_id=video.id
+        )
+
+    # Create the pending purchase before contacting Stripe.
+    purchase = Purchase.objects.create(
+        user=request.user,
+        video=video,
+        amount=video.price,
+        currency=currency,
+        status=Purchase.Status.PENDING
+    )
+
+    success_url = request.build_absolute_uri(
+        reverse("videos:purchase_success")
+    )
+
+    cancel_url = request.build_absolute_uri(
+        reverse(
+            "videos:video_detail",
+            args=[video.id]
+        )
+    )
+
+    try:
+        session = stripe.checkout.Session.create(
+            mode="payment",
+
+            payment_method_types=["card"],
+
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": currency,
+                        "product_data": {
+                            "name": video.title,
+                            "description": (
+                                f"VideoHub video #{video.id}"
+                            ),
+                        },
+                        "unit_amount": amount_in_cents,
+                    },
+                    "quantity": 1,
+                }
+            ],
+
+            customer_email=request.user.email or None,
+
+            client_reference_id=str(purchase.id),
+
+            metadata={
+                "purchase_id": str(purchase.id),
+                "user_id": str(request.user.id),
+                "video_id": str(video.id),
+            },
+
+            success_url=(
+                success_url
+                + "?session_id={CHECKOUT_SESSION_ID}"
+            ),
+
+            cancel_url=cancel_url,
+        )
+
+        purchase.stripe_checkout_session_id = session.id
+        purchase.save(
+            update_fields=["stripe_checkout_session_id"]
+        )
+
+        return redirect(session.url, permanent=False)
+
+    except stripe.StripeError:
+        purchase.status = Purchase.Status.FAILED
+        purchase.save(update_fields=["status"])
+
+        messages.error(
+            request,
+            "We could not start checkout. Please try again."
+        )
+
+        return redirect(
+            "videos:video_detail",
+            video_id=video.id
+        )
+
+@login_required(login_url="videos:login")
+def purchase_success(request):
+
+    session_id = request.GET.get("session_id", "").strip()
+
+    if not session_id:
+        return render(
+            request,
+            "videos/purchase_pending.html"
+        )
+
+    purchase = Purchase.objects.filter(
+        user=request.user,
+        stripe_checkout_session_id=session_id
+    ).first()
+
+    if purchase is None:
+        return render(
+            request,
+            "videos/purchase_pending.html"
+        )
+
+    return render(
+        request,
+        "videos/purchase_result.html",
+        {"purchase": purchase}
+    )
+
+
+@csrf_exempt
+@require_POST
+def stripe_webhook(request):
+
+    if not settings.STRIPE_WEBHOOK_SECRET:
+        logger.error("Stripe webhook secret is not configured.")
+        return HttpResponse(status=500)
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    signature = request.headers.get("Stripe-Signature", "")
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload=request.body,
+            sig_header=signature,
+            secret=settings.STRIPE_WEBHOOK_SECRET,
+        )
+
+    except (ValueError, stripe.SignatureVerificationError):
+        return HttpResponseBadRequest(
+            "Invalid webhook signature or payload."
+        )
+
+    event_id = event["id"]
+    event_type = event["type"]
+    session = event["data"]["object"]
+
+    supported_events = {
+        "checkout.session.completed",
+        "checkout.session.async_payment_succeeded",
+        "checkout.session.async_payment_failed",
+    }
+
+    if event_type not in supported_events:
+        return HttpResponse(status=200)
+
+    metadata = session.get("metadata") or {}
+    purchase_id = metadata.get("purchase_id")
+
+    if not purchase_id:
+        logger.warning(
+            "Stripe event %s has no purchase ID.",
+            event_id
+        )
+        return HttpResponse(status=200)
+
+    try:
+        with transaction.atomic():
+
+            # Reserve this Stripe event ID. A duplicate event
+            # cannot be processed twice.
+            ProcessedStripeEvent.objects.create(
+                event_id=event_id,
+                event_type=event_type,
+            )
+
+            purchase = (
+                Purchase.objects
+                .select_for_update()
+                .select_related("user", "video")
+                .get(pk=purchase_id)
+            )
+
+            # Verify that the event corresponds to this purchase.
+            if (
+                str(purchase.user_id) != str(metadata.get("user_id"))
+                or str(purchase.video_id) != str(metadata.get("video_id"))
+                or session.get("id")
+                != purchase.stripe_checkout_session_id
+            ):
+                logger.error(
+                    "Stripe metadata mismatch for purchase %s.",
+                    purchase_id
+                )
+                raise ValueError("Purchase metadata mismatch.")
+
+            # Confirm that the checkout session is a payment
+            # session for the expected amount and currency.
+            if session.get("mode") != "payment":
+                raise ValueError("Unexpected checkout mode.")
+
+            if session.get("currency") != purchase.currency:
+                raise ValueError("Currency mismatch.")
+
+            if session.get("amount_total") != int(
+                purchase.amount * Decimal("100")
+            ):
+                raise ValueError("Payment amount mismatch.")
+
+            if event_type in {
+                "checkout.session.completed",
+                "checkout.session.async_payment_succeeded",
+            }:
+
+                if session.get("payment_status") != "paid":
+                    # Do not grant access for an unpaid session.
+                    return HttpResponse(status=200)
+
+                # Never let a later event change an already-paid
+                # purchase back to another state.
+                if purchase.status != Purchase.Status.PAID:
+                    purchase.status = Purchase.Status.PAID
+                    purchase.paid_at = timezone.now()
+                    purchase.stripe_payment_intent_id = (
+                        session.get("payment_intent") or ""
+                    )
+
+                    purchase.save(
+                        update_fields=[
+                            "status",
+                            "paid_at",
+                            "stripe_payment_intent_id",
+                        ]
+                    )
+
+                VideoAccessGrant.objects.get_or_create(
+                    user=purchase.user,
+                    video=purchase.video,
+                    defaults={
+                        "source": VideoAccessGrant.GrantSource.PAYMENT
+                    }
+                )
+
+            elif (
+                event_type
+                == "checkout.session.async_payment_failed"
+            ):
+                if purchase.status == Purchase.Status.PENDING:
+                    purchase.status = Purchase.Status.FAILED
+                    purchase.save(update_fields=["status"])
+
+    except ProcessedStripeEvent.DoesNotExist:
+        return HttpResponse(status=200)
+
+    except IntegrityError:
+        # Most commonly, Stripe delivered a duplicate event.
+        return HttpResponse(status=200)
+
+    except Purchase.DoesNotExist:
+        logger.warning(
+            "Stripe event %s refers to a missing purchase.",
+            event_id
+        )
+        return HttpResponse(status=200)
+
+    except ValueError:
+        logger.exception(
+            "Stripe event %s failed purchase verification.",
+            event_id
+        )
+        return HttpResponseBadRequest(
+            "Purchase verification failed."
+        )
+
+    return HttpResponse(status=200)
+
+def public_video_detail(request, video_id):
+    video = get_object_or_404(
+        Video.objects.select_related("category"),
+        pk=video_id,
+        is_published=True
+    )
+
+    has_access = (
+        video.access_type == Video.AccessType.FREE
+        or (
+            request.user.is_authenticated
+            and (
+                request.user.is_superuser
+                or VideoAccessGrant.objects.filter(
+                    user=request.user,
+                    video=video
+                ).exists()
+            )
+        )
+    )
+
+    return render(
+        request,
+        "videos/video_detail.html",
+        {
+            "video": video,
+            "has_access": has_access,
+        }
     )

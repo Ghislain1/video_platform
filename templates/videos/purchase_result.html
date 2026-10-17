@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Status | VideoHub</title>
+    <link rel="stylesheet" href="{% static 'css/video_detail.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+</header>
+
+<main class="container">
+    <div class="video-detail video-content">
+
+        {% if purchase.status == "paid" %}
+
+            <h1>Payment confirmed</h1>
+
+            <p>
+                Your purchase of
+                <strong>{{ purchase.video.title }}</strong>
+                has been confirmed.
+            </p>
+
+            <a
+                class="watch-link"
+                href="{% url 'videos:video_detail' purchase.video.id %}"
+            >
+                Watch your video
+            </a>
+
+        {% elif purchase.status == "pending" %}
+
+            <h1>Payment processing</h1>
+
+            <p>
+                Your payment is still being processed.
+                Access will become available after payment is confirmed.
+            </p>
+
+            <p>
+                Refresh this page in a moment to check the status.
+            </p>
+
+        {% else %}
+
+            <h1>Payment not completed</h1>
+
+            <p>
+                This purchase has not been confirmed as paid.
+            </p>
+
+            <a
+                href="{% url 'videos:video_detail' purchase.video.id %}"
+                class="watch-link"
+            >
+                Return to the video
+            </a>
+
+        {% endif %}
+
+    </div>
+</main>
+
+</body>
+</html>

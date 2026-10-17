@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status | VideoHub</title>
+    <link rel="stylesheet" href="{% static 'css/video_detail.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="{% url 'videos:public_library' %}" class="logo">
+        VideoHub
+    </a>
+</header>
+
+<main class="container">
+    <div class="video-detail video-content">
+        <h1>Checking your purchase</h1>
+
+        <p>
+            We could not confirm the purchase from this page.
+            If you completed payment, check your account again shortly.
+        </p>
+
+        <a href="{% url 'videos:account' %}" class="watch-link">
+            Return to My Account
+        </a>
+    </div>
+</main>
+
+</body>
+</html>

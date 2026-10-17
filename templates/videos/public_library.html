@@ -193,9 +193,47 @@
                                 {% if video.access_type == "free" %}
                                     <span class="price free-price">Free</span>
                                 {% else %}
-                                    <span class="price">
+                                    <!-- <span class="price">
                                         ${{ video.price }}
-                                    </span>
+                                    </span> -->
+                            {% if video.access_type == "paid" %}
+
+                                {% if has_access %}
+
+                                    <p>You have access to this video.</p>
+
+                                    <video controls preload="metadata">
+                                        <source
+                                            src="{% url 'videos:stream_video' video.id %}"
+                                            type="video/mp4"
+                                        >
+                                        Your browser does not support HTML video.
+                                    </video>
+
+                                {% elif user.is_authenticated %}
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'videos:create_checkout_session' video.id %}"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button type="submit" class="buy-button">
+                                            Buy Video — ${{ video.price }} CAD
+                                        </button>
+                                    </form>
+
+                                {% else %}
+
+                                    <p>Log in to purchase this video.</p>
+
+                                    <a href="{% url 'videos:login' %}?next={{ request.path|urlencode }}">
+                                        Log in to continue
+                                    </a>
+
+                                {% endif %}
+
+                            {% endif %}
                                 {% endif %}
 
                                 <a

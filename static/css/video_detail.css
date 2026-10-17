@@ -160,3 +160,18 @@ a {
         font-size: 14px;
     }
 }
+
+.buy-button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background: #1d4ed8;
+}

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from videos.models import Category, Video
-from .models import VideoAccessGrant
+from .models import Purchase, VideoAccessGrant
 # Register your models here.
 
 
@@ -29,3 +29,37 @@ class VideoAccessGrantAdmin(admin.ModelAdmin):
     list_filter = ("source", "granted_at")
     search_fields = ("user__username", "video__title")
     autocomplete_fields = ("user", "video")
+
+@admin.register(Purchase)
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "user",
+        "video",
+        "amount",
+        "currency",
+        "status",
+        "created_at",
+        "paid_at",
+    )
+
+    list_filter = (
+        "status",
+        "currency",
+        "created_at",
+    )
+
+    search_fields = (
+        "user__username",
+        "video__title",
+        "stripe_checkout_session_id",
+    )
+
+    readonly_fields = (
+        "amount",
+        "currency",
+        "stripe_checkout_session_id",
+        "stripe_payment_intent_id",
+        "created_at",
+        "paid_at",
+    )

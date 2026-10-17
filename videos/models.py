@@ -120,3 +120,86 @@ class VideoAccessGrant(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.video.title}"
+
+class Purchase(models.Model):
+
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        PAID = "paid", "Paid"
+        FAILED = "failed", "Failed"
+        CANCELED = "canceled", "Canceled"
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        related_name="video_purchases"
+    )
+
+    video = models.ForeignKey(
+        Video,
+        on_delete=models.PROTECT,
+        related_name="purchases"
+    )
+
+    amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2
+    )
+
+    currency = models.CharField(
+        max_length=3,
+        default="cad"
+    )
+
+    status = models.CharField(
+        max_length=10,
+        choices=Status.choices,
+        default=Status.PENDING
+    )
+
+    stripe_checkout_session_id = models.CharField(
+        max_length=255,
+        unique=True,
+        null=True,
+        blank=True
+    )
+
+    stripe_payment_intent_id = models.CharField(
+        max_length=255,
+        blank=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    paid_at = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return (
+            f"Purchase #{self.pk} - "
+            f"{self.user.username} - {self.video.title}"
+        )
+    
+# A webhook event model
+
+# Stripe may deliver the same event more than once.
+# Your application must avoid granting access repeatedly or processing a payment twice.
+
+class ProcessedStripeEvent(models.Model):
+    event_id = models.CharField(
+        max_length=255,
+        unique=True
+    )
+
+    event_type = models.CharField(max_length=100)
+
+    processed_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return self.event_id

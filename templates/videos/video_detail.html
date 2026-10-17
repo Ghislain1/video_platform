@@ -50,16 +50,36 @@
                          class="paid-thumbnail">
                 {% endif %}
 
-                <div class="paid-message">
-                    <h2>Premium Video</h2>
-                    <p>
-                        This video requires payment before you can watch it.
-                    </p>
-                    <p class="price">${{ video.price }}</p>
-                    <button type="button" disabled>
-                        Payment Coming Soon
-                    </button>
-                </div>
+                    {% if video.access_type == "paid" %}
+
+                        {% if user.is_authenticated %}
+
+                            {% if user.is_superuser or video.access_grants.filter %}
+                                <p>Check your account for video access.</p>
+                            {% else %}
+                                <form
+                                    method="post"
+                                    action="{% url 'videos:create_checkout_session' video.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button type="submit" class="buy-button">
+                                        Buy Video — ${{ video.price }} CAD
+                                    </button>
+                                </form>
+                            {% endif %}
+
+                        {% else %}
+
+                            <p>You must log in to purchase this video.</p>
+
+                            <a href="{% url 'videos:login' %}?next={{ request.path|urlencode }}">
+                                Log in to continue
+                            </a>
+
+                        {% endif %}
+
+                    {% endif %}
 
             {% endif %}
 
