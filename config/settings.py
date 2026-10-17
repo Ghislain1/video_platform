@@ -37,13 +37,13 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-    if host.strip()
-]
+# ALLOWED_HOSTS = [
+#     host.strip()
+#     for host in os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+#     if host.strip()
+# ]
 
 
 # Application definition
